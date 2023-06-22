@@ -13,6 +13,5 @@ namespace EntityLayer.Concreate
         public string AboutDetails2 { get; set;}
         public string AboutImage { get; set;}
         public string AboutImage2 { get; set;}
-        
     }
 }
