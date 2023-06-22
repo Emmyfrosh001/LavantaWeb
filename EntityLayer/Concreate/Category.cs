@@ -11,6 +11,6 @@ namespace EntityLayer.Concreate
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public int CategoryUst { get; set; }
-        public bool CategoryState { get; set; }
+        public bool CategoryStatus { get; set; }
     }
 }
