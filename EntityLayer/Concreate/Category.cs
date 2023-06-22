@@ -12,5 +12,7 @@ namespace EntityLayer.Concreate
         public string CategoryName { get; set; }
         public int CategoryUst { get; set; }
         public bool CategoryStatus { get; set; }
+
+        public ICollection<Product> Products { get; set;}
     }
 }

@@ -11,7 +11,6 @@ namespace EntityLayer.Concreate
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-        public int ProductCategoryID { get; set; }
         public int ProductStock { get; set; }
         public float ProductPrice { get; set; }
         public string ProductNote { get; set; }
@@ -23,5 +22,9 @@ namespace EntityLayer.Concreate
         public int ProductBasketDeleteCount { get; set; }
         public int ProductSellCount { get; set;}
         public int ProductReturnCount { get; set;}
+
+
+        public int CategoryID { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
