@@ -26,5 +26,9 @@ namespace EntityLayer.Concreate
 
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
+
+        public ICollection<ProductImage> ProductImages { get; set; }
+
+
     }
 }

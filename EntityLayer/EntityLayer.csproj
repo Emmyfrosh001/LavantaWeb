@@ -45,6 +45,7 @@
     <Compile Include="Concreate\Category.cs" />
     <Compile Include="Concreate\Contact.cs" />
     <Compile Include="Concreate\Product.cs" />
+    <Compile Include="Concreate\ProductImage.cs" />
     <Compile Include="Concreate\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
