@@ -13,6 +13,6 @@ namespace EntityLayer.Concreate
         public int CategoryUst { get; set; }
         public bool CategoryStatus { get; set; }
 
-        public ICollection<Product> Products { get; set;}
+        public ICollection<Product> Products { get; set; }  //Ürün tablosu ile ilişkilendirme
     }
 }

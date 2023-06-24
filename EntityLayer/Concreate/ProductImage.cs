@@ -8,11 +8,11 @@ namespace EntityLayer.Concreate
 {
     public  class ProductImage
     {
-        public int ProductImageID { get; set; }
-        public string ProductImageAdress { get; set; }
-        public string ProductImageStatus { get; set;}
+        public int ProductImageID { get; set; }    //Ürün Resim ID
+        public string ProductImageAdress { get; set; }    //Ürün Resim Yolu
+        public string ProductImageStatus { get; set; }    //Ürün Resim Durumu
 
-        public int ProductID { get; set; }
-        public virtual Product Products { get; set; }
+        public int ProductID { get; set; }  //Ürün ID
+        public virtual Product Products { get; set; }    //Ürün Tablosu ile ilişkilendirme
     }
 }

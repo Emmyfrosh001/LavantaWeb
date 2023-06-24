@@ -8,16 +8,16 @@ namespace EntityLayer.Concreate
 {
     public class User
     {
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserSurName { get; set; }
-        public string UserImage { get; set; }
-        public string UserMail { get; set; }
-        public string UserPassword { get; set; }
-        public string UserPhoneNumber { get; set; }
-        public string UserCity { get; set; }
-        public string UserDistrict { get; set; }
-        public string UserAddress { get; set; }
-        public bool UserStatus { get; set; }
+        public int UserID { get; set; }     //Kullanıcı ID
+        public string UserName { get; set; }     //Kullanıcı Adı
+        public string UserSurname { get; set; }     //Kullanıcı Soyadı
+        public string UserImage { get; set; }     //Kullanıcı Resmi
+        public string UserMail { get; set; }     //Kullanıcı Mail Adresi
+        public string UserPassword { get; set; }     //Kullanıcı Parolası
+        public string UserPhoneNumber { get; set; }     //Kullanıcı Telefon Numarası
+        public string UserCity { get; set; }     //Kullanıcının Yaşadığı Şehir
+        public string UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
+        public string UserAddress { get; set; }     //Kullanıcının açık adresi
+        public bool UserStatus { get; set; }     //Kullanıcı Durumu (Websitesine erişimi olacak mı engellenecek mi)
     }
 }
