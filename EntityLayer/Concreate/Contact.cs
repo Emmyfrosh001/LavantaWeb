@@ -8,10 +8,10 @@ namespace EntityLayer.Concreate
 {
     public class Contact
     {
-        public int ContactID { get; set; }
-        public string UserName { get; set; }
-        public string UserMail { get; set; }
-        public string Subject { get; set; }
-        public string Message { get; set; }
+        public int ContactID { get; set; }      //İletişim Bilgi ID
+        public string UserName { get; set; }    //Kullanıcı Adı
+        public string UserMail { get; set; }    //Kullanıcı Mail Adresi
+        public string Subject { get; set; }     //Mesajın Konusu
+        public string Message { get; set; }     //Mesaj
     }
 }
