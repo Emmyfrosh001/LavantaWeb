@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concreate
 {
-    internal class Order
+    public class Order  //Sipariş
     {
     }
 }
