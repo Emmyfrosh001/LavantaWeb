@@ -11,10 +11,10 @@ namespace EntityLayer.Concreate
         public int OrderID { get; set; } //Sipariş ID
         public DateTime OrderDateTime { get; set; } //Sipariş Tarihi
         public string OrderState { get; set; } //Sipariş Güncel Durumu
-        public string OrderPayType { get; set; }
-        public float OrderPrice { get; set; }
-        public string OrderAddress { get; set; }
-        public string OrderCargoPrice { get; set; }
+        public string OrderPayType { get; set; } //Sipariş Ödeme Türü
+        public float OrderPrice { get; set; }    //Sipariş Tutarı
+        public string OrderAddress { get; set; } //Sipariş Adresi
+        public string OrderCargoPrice { get; set; } //Sipariş Kargo Ücreti
 
         public int UserID { get; set; }  //Kullanıcı ID
         public virtual User User { get; set; }    //Kullanıcı Tablosu ile ilişkilendirme
