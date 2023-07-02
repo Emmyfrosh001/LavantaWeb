@@ -46,6 +46,7 @@
     <Compile Include="Concreate\Comment.cs" />
     <Compile Include="Concreate\Contact.cs" />
     <Compile Include="Concreate\Order.cs" />
+    <Compile Include="Concreate\OrderDetail.cs" />
     <Compile Include="Concreate\Product.cs" />
     <Compile Include="Concreate\ProductImage.cs" />
     <Compile Include="Concreate\User.cs" />

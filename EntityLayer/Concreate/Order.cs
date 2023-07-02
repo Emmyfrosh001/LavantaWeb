@@ -18,5 +18,8 @@ namespace EntityLayer.Concreate
 
         public int UserID { get; set; }  //Kullanıcı ID
         public virtual User User { get; set; }    //Kullanıcı Tablosu ile ilişkilendirme
+
+
+        public ICollection<OrderDetail> OrderDetails { get; set; }    //Sipariş Detay Tablosu ile ilişkilendirme
     }
 }
