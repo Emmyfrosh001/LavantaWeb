@@ -8,9 +8,9 @@ namespace EntityLayer.Concreate
 {
     public class Order  //Sipariş
     {
-        public int OrderID { get; set; }
-        public DateTime OrderDateTime { get; set; }
-        public string OrderState { get; set; }
+        public int OrderID { get; set; } //Sipariş ID
+        public DateTime OrderDateTime { get; set; } //Sipariş Tarihi
+        public string OrderState { get; set; } //Sipariş Güncel Durumu
         public string OrderPayType { get; set; }
         public float OrderPrice { get; set; }
         public string OrderAddress { get; set; }
