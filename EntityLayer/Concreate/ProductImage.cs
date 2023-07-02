@@ -13,6 +13,6 @@ namespace EntityLayer.Concreate
         public string ProductImageStatus { get; set; }    //Ürün Resim Durumu
 
         public int ProductID { get; set; }  //Ürün ID
-        public virtual Product Products { get; set; }    //Ürün Tablosu ile ilişkilendirme
+        public virtual Product Product { get; set; }    //Ürün Tablosu ile ilişkilendirme
     }
 }

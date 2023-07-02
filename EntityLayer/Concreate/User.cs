@@ -19,5 +19,7 @@ namespace EntityLayer.Concreate
         public string UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
         public string UserAddress { get; set; }     //Kullanıcının açık adresi
         public bool UserStatus { get; set; }     //Kullanıcı Durumu (Websitesine erişimi olacak mı engellenecek mi)
+
+        public ICollection<Order> Orders { get; set; }    //Sipariş Tablosu ile ilişkilendirme
     }
 }

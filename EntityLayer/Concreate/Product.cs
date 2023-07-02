@@ -28,6 +28,7 @@ namespace EntityLayer.Concreate
         public virtual Category Category { get; set; }  //Kategori tablosu ile ilişkilendirme
 
         public ICollection<ProductImage> ProductImages { get; set; }    //Ürün Resim Tablosu ile ilişkilendirme
+        //public ICollection<Order> Orders { get; set; }    //Sipariş Tablosu ile ilişkilendirme
 
 
     }
