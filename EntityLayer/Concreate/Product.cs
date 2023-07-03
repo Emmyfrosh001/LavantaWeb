@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace EntityLayer.Concreate
 {
     public class Product
     {
+        [Key]
         public int ProductID { get; set; }  //Ürün ID
         public string ProductName { get; set; } //Ürün Adı
         public string ProductDescription { get; set; }  //Ürün Açıklaması
