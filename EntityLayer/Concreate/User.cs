@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,16 +9,25 @@ namespace EntityLayer.Concreate
 {
     public class User
     {
-
+        [Key]
         public int UserID { get; set; }     //Kullanıcı ID
+        [StringLength(50)]
         public string UserName { get; set; }     //Kullanıcı Adı
+        [StringLength(50)]
         public string UserSurname { get; set; }     //Kullanıcı Soyadı
+        [StringLength(250)]
         public string UserImage { get; set; }     //Kullanıcı Resmi
+        [StringLength(50)]
         public string UserMail { get; set; }     //Kullanıcı Mail Adresi
+        [StringLength(50)]
         public string UserPassword { get; set; }     //Kullanıcı Parolası
+        [StringLength(10)]
         public string UserPhoneNumber { get; set; }     //Kullanıcı Telefon Numarası
+        [StringLength(15)]
         public string UserCity { get; set; }     //Kullanıcının Yaşadığı Şehir
+        [StringLength(16)]
         public string UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
+        [StringLength(250)]
         public string UserAddress { get; set; }     //Kullanıcının açık adresi
         public bool UserStatus { get; set; }     //Kullanıcı Durumu (Websitesine erişimi olacak mı engellenecek mi)
 
