@@ -30,5 +30,7 @@ namespace EntityLayer.Concreate
         public ICollection<ProductImage> ProductImages { get; set; }    //Ürün Resim Tablosu ile ilişkilendirme
 
         public ICollection<OrderDetail> OrderDetails { get; set; }    //Sipariş Detay Tablosu ile ilişkilendirme
+
+        public ICollection<Comment> Comments{ get; set; }    //Yorum Tablosu ile ilişkilendirme
     }
 }

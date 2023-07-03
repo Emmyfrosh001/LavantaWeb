@@ -21,5 +21,6 @@ namespace EntityLayer.Concreate
         public bool UserStatus { get; set; }     //Kullanıcı Durumu (Websitesine erişimi olacak mı engellenecek mi)
 
         public ICollection<Order> Orders { get; set; }    //Sipariş Tablosu ile ilişkilendirme
+        public ICollection<Comment> Comments { get; set; }     //Yorum Tablosu ile ilişkilendirme
     }
 }
