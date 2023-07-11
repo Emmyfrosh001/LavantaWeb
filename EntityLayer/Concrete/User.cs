@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Concreate
+namespace EntityLayer.Concrete
 {
     public class User
     {
@@ -33,5 +33,6 @@ namespace EntityLayer.Concreate
 
         public ICollection<Order> Orders { get; set; }    //Sipariş Tablosu ile ilişkilendirme
         public ICollection<Comment> Comments { get; set; }     //Yorum Tablosu ile ilişkilendirme
+        public ICollection<Basket>Baskets{ get; set; }     //Yorum Tablosu ile ilişkilendirme
     }
 }
