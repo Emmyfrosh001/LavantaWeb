@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface ICategoryDal
+    public interface ICategoryDal:IRepository<Category>
     {
         //CRUD Operasyonları
         //Type Name();
-        List<Category> List();
+        //List<Category> List();
 
-        void Add(Category p);
-        void Update(Category p);
-        void Delete(Category p);
+        //void Add(Category p);
+        //void Update(Category p);
+        //void Delete(Category p);
     }
 }
