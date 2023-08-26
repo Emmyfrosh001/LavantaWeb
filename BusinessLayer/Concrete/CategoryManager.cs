@@ -20,6 +20,11 @@ namespace BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
+        public void AddCategoryBl(Category category)
+        {
+            _categoryDal.Add(category);
+        }
+
         public List<Category> GetAllList()
         {
             return _categoryDal.List();
