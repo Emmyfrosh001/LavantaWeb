@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public interface EfBasketDal
+    public class EfBasketDal
     {
     }
 }

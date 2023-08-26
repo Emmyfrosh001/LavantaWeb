@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public interface EfOrderDal
+    public class EfOrderDal
     {
     }
 }

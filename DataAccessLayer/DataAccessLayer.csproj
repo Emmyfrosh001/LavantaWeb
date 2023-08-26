@@ -68,9 +68,9 @@
     <Compile Include="EntityFramework\EfBasketDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfCommentDal.cs" />
-    <Compile Include="EntityFramework\EfConcactDal.cs" />
+    <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfOrderDal.cs" />
-    <Compile Include="EntityFramework\EfOrderDetailsDal.cs" />
+    <Compile Include="EntityFramework\EfOrderDetailDal.cs" />
     <Compile Include="EntityFramework\EfProductDal.cs" />
     <Compile Include="EntityFramework\EfProductImageDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
