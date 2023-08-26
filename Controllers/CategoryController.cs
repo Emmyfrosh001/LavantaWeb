@@ -8,6 +8,7 @@ namespace AydinogluLavender.Controllers
 {
     public class CategoryController : Controller
     {
+        categorymanager
         // GET: Category
         public ActionResult Index()
         {
