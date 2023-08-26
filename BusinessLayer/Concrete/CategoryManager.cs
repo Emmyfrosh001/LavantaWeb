@@ -13,14 +13,14 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        ICategoryDal _categoryDal;
+        ICategoryDal _categoryDal; 
 
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
 
-        public List<Category> GetList()
+        public List<Category> GetAllList()
         {
             return _categoryDal.List();
         }

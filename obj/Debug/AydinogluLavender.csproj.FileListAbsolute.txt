@@ -77,3 +77,16 @@ C:\Users\halil\source\repos\AydinogluLavender\obj\Debug\AydinogluLavender.csproj
 C:\Users\halil\source\repos\AydinogluLavender\obj\Debug\AydinogluLavender.csproj.CopyComplete
 C:\Users\halil\source\repos\AydinogluLavender\obj\Debug\AydinogluLavender.dll
 C:\Users\halil\source\repos\AydinogluLavender\obj\Debug\AydinogluLavender.pdb
+C:\Users\halil\source\repos\AydinogluLavender\bin\BusinessLayer.dll
+C:\Users\halil\source\repos\AydinogluLavender\bin\DataAccessLayer.dll
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityLayer.dll
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityFramework.dll
+C:\Users\halil\source\repos\AydinogluLavender\bin\BusinessLayer.pdb
+C:\Users\halil\source\repos\AydinogluLavender\bin\BusinessLayer.dll.config
+C:\Users\halil\source\repos\AydinogluLavender\bin\DataAccessLayer.pdb
+C:\Users\halil\source\repos\AydinogluLavender\bin\DataAccessLayer.dll.config
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityLayer.pdb
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityLayer.dll.config
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityFramework.xml
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityFramework.SqlServer.dll
+C:\Users\halil\source\repos\AydinogluLavender\bin\EntityFramework.SqlServer.xml
