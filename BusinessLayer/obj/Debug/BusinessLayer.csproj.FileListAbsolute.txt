@@ -16,3 +16,9 @@ C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\obj\Debug\BusinessLa
 C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\FluentValidation.dll
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\FluentValidation.xml
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\halil\source\repos\AydinogluLavender\BusinessLayer\bin\Debug\System.Threading.Tasks.Extensions.xml
