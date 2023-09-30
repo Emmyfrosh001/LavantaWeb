@@ -1,9 +1,10 @@
-﻿
+﻿@model EntityLayer.Concrete.Category
+
 @{
     ViewBag.Title = "AddCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -15,7 +16,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                        <li class="breadcrumb-item"><a href="#">AdminCategory</a></li>
                         <li class="breadcrumb-item active">AddCategory</li>
                     </ol>
                 </div>
@@ -30,8 +31,29 @@
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
                         <div class="card-body pad table-responsive">
-                            <p>Veriler bu alanda olacak</p>
 
+
+
+                            @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+                            {
+                                <div class="form-group col-md-6" style="padding-left: 45px">
+                                    @Html.Label("Kategori Adı:")
+                                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.CategoryName) </p>
+
+                                    @*Üst kategory*@
+
+                                    @Html.Label("Kategori Durumu:")
+                                    @Html.DropDownList("CategoryStatus", new List<SelectListItem>
+                                    {
+                                          new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
+                                          new SelectListItem { Text = "Pasif", Value = "false"}
+                                    }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.CategoryStatus) </p>
+                                    <br />
+                                    <button class="btn btn-success">Kategori Ekle</button>
+                                </div>
+                            }
 
                         </div>
                         <!-- /.card -->
