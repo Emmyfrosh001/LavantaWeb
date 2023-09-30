@@ -1,45 +1,99 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Kategori</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
-                        <li class="breadcrumb-item active">Index</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary card-outline">
-                        <div class="card-body pad table-responsive">
-                            <p>Veriler bu alanda olacak</p>
-                            
-                        </div>
-                        <!-- /.card -->
+@{ string statusbtn = "danger";}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Kategori</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                            <li class="breadcrumb-item active">Index</li>
+                        </ol>
                     </div>
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- ./row -->
+            </div><!-- /.container-fluid -->
+        </section>
 
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-</div>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body pad table-responsive">
+                                <p>Veriler bu alanda olacak</p>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategoriler</font></font></h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body p-0">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th @*style="width: 10px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ktg ID</font></font></th>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori</font></font></th>
+                                                    <th @*style="width: 40px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Sayısı</font></font></th>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Üst Kategori</font></font></th>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori Durumu</font></font></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryID</font></font></td>
+                                                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryName</font></font></td>
+                                                        <td><span class="badge bg-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">55</font></font></span></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+                                                                <font style="vertical-align: inherit;">
+                                                                @if (item.CategoryUst == 0)
+                                                                {
+                                                                    <font>Ana Kategori</font>
+                                                                }
+                                                            </font>
+                                                        </font>
+                                                    </td>
+                                                    <td>
+                                                        @if(item.CategoryStatus)
+                                                        { statusbtn = "success"; }
+                                                        else { statusbtn = "danger"; }
+                                                        <font style="vertical-align: inherit;"><font class="badge badge-@statusbtn" style="vertical-align: inherit;">
+    @if (item.CategoryStatus)
+    {
+        <font>Aktif</font> }
+    else
+    {
+        <font>Pasif</font>}
+</font></font></td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- ./row -->
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
