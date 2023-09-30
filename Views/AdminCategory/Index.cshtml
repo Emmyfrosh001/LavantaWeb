@@ -46,38 +46,42 @@
                                                     <th @*style="width: 40px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Sayısı</font></font></th>
                                                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Üst Kategori</font></font></th>
                                                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori Durumu</font></font></th>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Güncelle</font></font></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach (var item in Model)
                                                 {
                                                     <tr>
-                                                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryID</font></font></td>
+                                                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryID</font></font></th>
                                                         <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryName</font></font></td>
                                                         <td><span class="badge bg-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">55</font></font></span></td>
                                                         <td>
                                                             <font style="vertical-align: inherit;">
                                                                 <font style="vertical-align: inherit;">
-                                                                @if (item.CategoryUst == 0)
-                                                                {
-                                                                    <font>Ana Kategori</font>
-                                                                }
+                                                                    @if (item.CategoryUst == 0)
+                                                                    {
+                                                                        <font>Ana Kategori</font>
+                                                                    }
+                                                                </font>
                                                             </font>
-                                                        </font>
-                                                    </td>
-                                                    <td>
-                                                        @if(item.CategoryStatus)
-                                                        { statusbtn = "success"; }
-                                                        else { statusbtn = "danger"; }
-                                                        <font style="vertical-align: inherit;"><font class="badge badge-@statusbtn" style="vertical-align: inherit;">
-    @if (item.CategoryStatus)
-    {
-        <font>Aktif</font> }
-    else
-    {
-        <font>Pasif</font>}
-</font></font></td>
-                                                </tr>
+                                                        </td>
+                                                        <td>
+                                                            @if (item.CategoryStatus)
+                                                            { statusbtn = "success"; }
+                                                            else { statusbtn = "danger"; }
+                                                            <font style="vertical-align: inherit;">
+                                                                <font class="badge badge-@statusbtn" style="vertical-align: inherit;">
+                                                                    @if (item.CategoryStatus)
+                                                                    {<font>Aktif</font> }
+                                                                    else
+                                                                    {<font>Pasif</font>}
+                                                                </font>
+                                                            </font>
+                                                        </td>
+                                                        <td><a href="#" class="btn btn-primary btn-sm">Güncelle</a></td>
+
+                                                    </tr>
                                             }
                                             </tbody>
                                         </table>
