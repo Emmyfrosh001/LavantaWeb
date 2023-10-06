@@ -20,12 +20,12 @@ namespace BusinessLayer.Concrete
 
         public void AddUserBl(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Add(user);
         }
 
         public void DeleteUserBl(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Delete(user);
         }
 
         public List<User> GetAllList()
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public void UpdateUserBl(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
         }
     }
 }
