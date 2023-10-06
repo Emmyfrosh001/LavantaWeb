@@ -1,0 +1,74 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Kategori Güncelle</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Category</a></li>
+                        <li class="breadcrumb-item active">EditCategory</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            @using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post))
+                            {
+                                <div class="form-group col-md-6" style="padding-left: 45px">
+                                    @*@Html.Label("Kategori ID :")
+                                    @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control", @readonly = "true" })
+                                    <br />*@
+                                    @Html.HiddenFor(x => x.CategoryID, new { @class = "form-control" })
+                                    @Html.Label("Kategori Adı:")
+                                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.CategoryName) </p>
+
+                                    @*Üst kategory*@
+
+                                    @*@Html.Label("Kategori Üst:")
+                                    @Html.TextBoxFor(x => x.CategoryUst, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.CategoryName) </p>*@
+
+                                    @Html.Label("Kategori Durumu:")
+                                    @Html.DropDownList("CategoryStatus", new List<SelectListItem>
+                                    {
+                                          new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
+                                          new SelectListItem { Text = "Pasif", Value = "false"}
+                                    }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.CategoryStatus) </p>
+                                    <br />
+                                    <button class="btn btn-success">Kategoriyi Güncelle</button>
+                                    <a href="/AdminCategory/Index" class="btn btn-secondary">Geri</a>
+
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ./row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

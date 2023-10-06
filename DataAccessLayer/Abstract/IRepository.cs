@@ -10,7 +10,7 @@ namespace DataAccessLayer.Abstract
     public interface IRepository<T>
     {
         List<T> List();
-
+        T Get(Expression<Func<T, bool>> filter); 
         void Add(T item);
         void Update(T item);
         void Delete(T item);

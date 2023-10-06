@@ -28,8 +28,8 @@ namespace AydinogluLavender.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category ctg)
         {
-            CategoryValidator categotyvalidator = new CategoryValidator();
-            ValidationResult results = categotyvalidator.Validate(ctg);
+            CategoryValidator categoryvalidator = new CategoryValidator();
+            ValidationResult results = categoryvalidator.Validate(ctg);
             if (results.IsValid)
             {
                 cm.AddCategoryBl(ctg);
@@ -44,6 +44,25 @@ namespace AydinogluLavender.Controllers
                 }
             }
             return View();
+        }
+        public ActionResult DeleteCategory(int id)
+        {
+            var categoryvelue=cm.GetByID(id);
+            cm.DeleteCategoryBl(categoryvelue);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {
+            var category = cm.GetByID(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult EditCategory(Category category)
+        {
+            cm.UpdateCategoryBl(category);
+            return RedirectToAction("Index");
         }
     }
 }

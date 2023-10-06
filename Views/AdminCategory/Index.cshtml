@@ -46,6 +46,7 @@
                                                     <th @*style="width: 40px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Sayısı</font></font></th>
                                                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Üst Kategori</font></font></th>
                                                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori Durumu</font></font></th>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sil</font></font></th>
                                                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Güncelle</font></font></th>
                                                 </tr>
                                             </thead>
@@ -79,7 +80,8 @@
                                                                 </font>
                                                             </font>
                                                         </td>
-                                                        <td><a href="#" class="btn btn-primary btn-sm">Güncelle</a></td>
+                                                        <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-primary btn-sm">Güncelle</a></td>
+                                                        <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger btn-sm">Sil</a></td>
 
                                                     </tr>
                                             }
