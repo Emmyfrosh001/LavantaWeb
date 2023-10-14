@@ -74,6 +74,10 @@
     <Compile Include="EntityFramework\EfProductDal.cs" />
     <Compile Include="EntityFramework\EfProductImageDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
+    <Compile Include="Migrations\202310141929391_userUpdateSutun.cs" />
+    <Compile Include="Migrations\202310141929391_userUpdateSutun.designer.cs">
+      <DependentUpon>202310141929391_userUpdateSutun.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,7 +91,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310141929391_userUpdateSutun.resx">
+      <DependentUpon>202310141929391_userUpdateSutun.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

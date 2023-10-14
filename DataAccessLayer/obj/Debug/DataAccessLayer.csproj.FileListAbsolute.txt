@@ -13,3 +13,5 @@ C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAcce
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.userUpdateSutun.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache

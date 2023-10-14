@@ -1,0 +1,91 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Kategori</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                        <li class="breadcrumb-item active">Index</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            @*<p>Veriler bu alanda olacak</p>*@
+
+                            @using (Html.BeginForm("AddUser", "User", FormMethod.Post))
+                            {
+                                <div class="form-group col-md-6" style="padding-left: 45px">
+                                    @Html.Label("Kullanıcı Adı:")
+                                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserName) </p>
+                                    @Html.Label("Kullanıcı Soyadı:")
+                                    @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserSurname) </p>
+                                    @Html.Label("Kullanıcı Resmi:")
+                                    @Html.TextBoxFor(x => x.UserImage, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserImage) </p>
+                                    @Html.Label("Kullanıcı Mail:")
+                                    @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserMail) </p>
+                                    @Html.Label("Kullanıcı Parola:")
+                                    @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserPassword) </p>
+                                    @Html.Label("Kullanıcı Telefon:")
+                                    @Html.TextBoxFor(x => x.UserPhoneNumber, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserPhoneNumber) </p>
+                                    @Html.Label("Kullanıcı Şehir:")
+                                    @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
+                                    @Html.Label("Kullanıcı İlçe:")
+                                    @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>
+                                    @Html.Label("Kullanıcı Açık Adres:")
+                                    @Html.TextAreaFor(x => x.UserAddress, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserAddress) </p>
+
+                                    @*Üst kategory*@
+
+                                    @Html.Label("Kategori Durumu:")
+                                    @Html.DropDownList("CategoryStatus", new List<SelectListItem>
+                                    {
+                                          new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
+                                          new SelectListItem { Text = "Pasif", Value = "false"}
+                                    }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.UserStatus) </p>
+                                    <br />
+                                    <button class="btn btn-success">Kullanıcı Ekle</button>
+                                    <a href="/AdminCategory/Index" class="btn btn-secondary">Geri</a>
+                                </div>
+                            }
+
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ./row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -6,17 +6,23 @@
 }
 @{ string statusbtn = "danger";}
 
+<head>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/admin_template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/admin_template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+</head>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Kategori</h1>
+                    <h1>Kullanıcılar</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                        <li><a href="/User/AddUser" class="btn btn-success"> Kullanıcı Ekle </a> </li>  &nbsp;&nbsp;
+                        <li class="breadcrumb-item"><a href="#">User</a></li>
                         <li class="breadcrumb-item active">Index</li>
                     </ol>
                 </div>
@@ -32,42 +38,31 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body pad table-responsive">
                             @*<p>Veriler bu alanda olacak</p>*@
-
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategoriler</font></font></h3>
-                                </div>
                                 <!-- /.card-header -->
-                                <div class="card-body p-0">
-                                    <table class="table table-striped">
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th @*style="width: 10px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ktg ID</font></font></th>
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori</font></font></th>
-                                                <th @*style="width: 40px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Sayısı</font></font></th>
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Üst Kategori</font></font></th>
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori Durumu</font></font></th>
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sil</font></font></th>
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Güncelle</font></font></th>
+                                                <th>User ID</th>
+                                                <th>Kullanıcı Adı Soyadı</th>
+                                                <th>Mail Adresi</th>
+                                                <th>İl</th>
+                                                <th>İlçe</th>
+                                                <th>Durumu</th>
+                                                <th>Güncelle</th>
+                                                <th>Sil</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
-                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.UserID</font></font></th>
-                                                    <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.UserName</font></font></td>
-                                                    <td><span class="badge bg-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">55</font></font></span></td>
-                                                    <td>
-                                                        <font style="vertical-align: inherit;">
-                                                            <font style="vertical-align: inherit;">
-                                                                @if (item.UserID==0)
-                                                                {
-                                                                    <font>Ana Kategori</font>
-                                                                }
-                                                            </font>
-                                                        </font>
-                                                    </td>
+                                                    <td>@item.UserID</td>
+                                                    <td>@item.UserName @item.UserSurname</td>
+                                                    <td>@item.UserMail</td>
+                                                    <td>@item.UserCity</td>
+                                                    <td>@item.UserDistrict</td>
                                                     <td>
                                                         @if (item.UserStatus)
                                                         { statusbtn = "success"; }
@@ -81,12 +76,24 @@
                                                             </font>
                                                         </font>
                                                     </td>
-                                                    <td><a href="/AdminCategory/EditCategory/@item.UserID" class="btn btn-primary btn-sm">Güncelle</a></td>
-                                                    <td><a href="/AdminCategory/DeleteCategory/@item.UserID" class="btn btn-danger btn-sm">Sil</a></td>
-
+                                                    <td><a href="/User/EditUser/@item.UserID" class="btn btn-primary btn-sm">Güncelle</a></td>
+                                                    <td><a href="/User/DeleteUser/@item.UserID" class="btn btn-danger btn-sm">Sil</a></td>
                                                 </tr>
                                             }
-                                        </tbody>
+                                            </tbody>
+                                            
+                                        <tfoot>
+                                            <tr>
+                                                <th>User ID</th>
+                                                <th>Kullanıcı Adı Soyadı</th>
+                                                <th>Mail Adresi</th>
+                                                <th>İl</th>
+                                                <th>İlçe</th>
+                                                <th>Durumu</th>
+                                                <th>Güncelle</th>
+                                                <th>Sil</th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -104,3 +111,4 @@
     </section>
     <!-- /.content -->
 </div>
+

@@ -19,7 +19,7 @@ namespace EntityLayer.Concrete
         public string UserImage { get; set; }     //Kullanıcı Resmi
         [StringLength(50)]
         public string UserMail { get; set; }     //Kullanıcı Mail Adresi
-        [StringLength(50)]
+        [StringLength(200)]
         public string UserPassword { get; set; }     //Kullanıcı Parolası
         [StringLength(10)]
         public string UserPhoneNumber { get; set; }     //Kullanıcı Telefon Numarası
