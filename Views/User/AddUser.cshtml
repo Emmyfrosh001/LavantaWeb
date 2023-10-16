@@ -10,11 +10,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Kategori</h1>
+                    <h1>User</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                        <li class="breadcrumb-item"><a href="#">User</a></li>
                         <li class="breadcrumb-item active">Index</li>
                     </ol>
                 </div>
@@ -64,16 +64,16 @@
 
                                     @*Üst kategory*@
 
-                                    @Html.Label("Kategori Durumu:")
-                                    @Html.DropDownList("CategoryStatus", new List<SelectListItem>
+                                    @Html.Label("Kullanıcı Durumu:")
+                                    @Html.DropDownList("UserStatus", new List<SelectListItem>
                                     {
                                           new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
                                           new SelectListItem { Text = "Pasif", Value = "false"}
-                                    }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
+                                    }, /*"Kullanıcı Durumu Seçiniz!",*/ new { @class = "form-control" })
                                     <p style="color:red"> @Html.ValidationMessageFor(x => x.UserStatus) </p>
                                     <br />
                                     <button class="btn btn-success">Kullanıcı Ekle</button>
-                                    <a href="/AdminCategory/Index" class="btn btn-secondary">Geri</a>
+                                    <a href="/User/Index" class="btn btn-secondary">Geri</a>
                                 </div>
                             }
 

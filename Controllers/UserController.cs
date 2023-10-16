@@ -14,6 +14,8 @@ namespace AydinogluLavender.Controllers
     public class UserController : Controller
     {
         UserManager um = new UserManager(new EfUserDal());
+        UserValidator userValidator = new UserValidator();
+
         public ActionResult Index()
         {
             var uservalue=um.GetAllList(); 
@@ -27,11 +29,35 @@ namespace AydinogluLavender.Controllers
         [HttpPost]
         public ActionResult AddUser(User kullanici)
         {
-            UserValidator userValidator = new UserValidator();
             ValidationResult results = userValidator.Validate(kullanici);
             if (results.IsValid)
             {
                 um.AddUserBl(kullanici);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+
+                }
+            }
+            return View();
+        }
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            var result=um.GetByID(id);
+            return View(result);
+        }
+        [HttpPost]
+        public ActionResult EditUser(User user)
+        {
+            ValidationResult results = userValidator.Validate(user);
+            if (results.IsValid)
+            {
+                um.UpdateUserBl(user);
                 return RedirectToAction("Index");
             }
             else
