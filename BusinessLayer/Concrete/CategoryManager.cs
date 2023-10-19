@@ -30,6 +30,11 @@ namespace BusinessLayer.Concrete
             _categoryDal.Delete(category);
         }
 
+        public List<Category> GetAktifAllList()
+        {
+            return _categoryDal.List(x => x.CategoryStatus == true);
+        }
+
         public List<Category> GetAllList()
         {
             return _categoryDal.List();

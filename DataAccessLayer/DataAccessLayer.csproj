@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202310141929391_userUpdateSutun.designer.cs">
       <DependentUpon>202310141929391_userUpdateSutun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310192153249_ProductInsertImage.cs" />
+    <Compile Include="Migrations\202310192153249_ProductInsertImage.designer.cs">
+      <DependentUpon>202310192153249_ProductInsertImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +98,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310141929391_userUpdateSutun.resx">
       <DependentUpon>202310141929391_userUpdateSutun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310192153249_ProductInsertImage.resx">
+      <DependentUpon>202310192153249_ProductInsertImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

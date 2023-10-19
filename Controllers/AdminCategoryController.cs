@@ -47,8 +47,18 @@ namespace AydinogluLavender.Controllers
         }
         public ActionResult DeleteCategory(int id)
         {
-            var categoryvelue=cm.GetByID(id);
-            cm.DeleteCategoryBl(categoryvelue);
+            //var categoryvelue=cm.GetByID(id);
+            //cm.DeleteCategoryBl(categoryvelue);
+            var CategoryValue = cm.GetByID(id);
+            if (CategoryValue.CategoryStatus == true)
+            {
+                CategoryValue.CategoryStatus = false;
+            }
+            else
+            {
+                CategoryValue.CategoryStatus = true;
+            }
+            cm.UpdateCategoryBl(CategoryValue);
             return RedirectToAction("Index");
         }
         [HttpGet]

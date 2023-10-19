@@ -11,6 +11,8 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int ProductID { get; set; }  //Ürün ID
+        public int CategoryID { get; set; }     //Ürün Kategori ID
+        public virtual Category Category { get; set; }  //Kategori tablosu ile ilişkilendirme
         [StringLength(50)]
         public string ProductName { get; set; } //Ürün Adı
         [StringLength(250)]
@@ -19,9 +21,17 @@ namespace EntityLayer.Concrete
         public float ProductPrice { get; set; }  //Ürün Fiyatı
         [StringLength(250)]
         public string ProductNote { get; set; }  //Ürün Notu
+        public bool ProductStatus { get; set; }  //Ürün Durumu
+
+        [StringLength(250)]
+        public string Productımage1 { get; set; }  //Ürün Görseli 1
+        [StringLength(250)]
+        public string Productımage2 { get; set; }  //Ürün Görseli 2
+        [StringLength(250)]
+        public string Productımage3 { get; set; }  //Ürün Görseli 3
+
         public float ProductDiscount { get; set; } //Ürün indirim Miktarı
         public bool ProductDiscountStatus { get; set; }  //Ürün İndirim Durumu
-        public bool ProductStatus { get; set; }  //Ürün Durumu
         public int ProductDetailObserveCount { get; set; }  //Ürün Detay görüntülenme sayısı
         public int ProductBasketInsertCount { get; set; }  //Ürün Sepete Ekleme Sayısı
         public int ProductBasketDeleteCount { get; set; }  //Ürün Sepetten Silinme Sayısı
@@ -29,8 +39,6 @@ namespace EntityLayer.Concrete
         public int ProductReturnCount { get; set; }  //Ürün Iade sayısı
 
 
-        public int CategoryID { get; set; }     //Ürün Kategori ID
-        public virtual Category Category { get; set; }  //Kategori tablosu ile ilişkilendirme
 
         public ICollection<ProductImage> ProductImages { get; set; }    //Ürün Resim Tablosu ile ilişkilendirme
 
