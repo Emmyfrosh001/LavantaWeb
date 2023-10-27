@@ -23,12 +23,12 @@ namespace EntityLayer.Concrete
         public string ProductNote { get; set; }  //Ürün Notu
         public bool ProductStatus { get; set; }  //Ürün Durumu
 
-        [StringLength(250)]
-        public string Productımage1 { get; set; }  //Ürün Görseli 1
-        [StringLength(250)]
-        public string Productımage2 { get; set; }  //Ürün Görseli 2
-        [StringLength(250)]
-        public string Productımage3 { get; set; }  //Ürün Görseli 3
+        [StringLength(200)]
+        public string ProductImage1 { get; set; }  //Ürün Görseli 1
+        [StringLength(200)]
+        public string ProductImage2 { get; set; }  //Ürün Görseli 2
+        [StringLength(200)]
+        public string ProductImage3 { get; set; }  //Ürün Görseli 3
 
         public float ProductDiscount { get; set; } //Ürün indirim Miktarı
         public bool ProductDiscountStatus { get; set; }  //Ürün İndirim Durumu

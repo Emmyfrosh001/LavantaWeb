@@ -16,3 +16,6 @@ C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAcce
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.userUpdateSutun.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.ProductInsertImage.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.productImageEdit.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.productImageEdit1.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.productImageEditCurrection.resources

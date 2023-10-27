@@ -82,6 +82,18 @@
     <Compile Include="Migrations\202310192153249_ProductInsertImage.designer.cs">
       <DependentUpon>202310192153249_ProductInsertImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310270600595_productImageEdit.cs" />
+    <Compile Include="Migrations\202310270600595_productImageEdit.designer.cs">
+      <DependentUpon>202310270600595_productImageEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310270603131_productImageEdit1.cs" />
+    <Compile Include="Migrations\202310270603131_productImageEdit1.designer.cs">
+      <DependentUpon>202310270603131_productImageEdit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310270606033_productImageEditCurrection.cs" />
+    <Compile Include="Migrations\202310270606033_productImageEditCurrection.designer.cs">
+      <DependentUpon>202310270606033_productImageEditCurrection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +113,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310192153249_ProductInsertImage.resx">
       <DependentUpon>202310192153249_ProductInsertImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310270600595_productImageEdit.resx">
+      <DependentUpon>202310270600595_productImageEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310270603131_productImageEdit1.resx">
+      <DependentUpon>202310270603131_productImageEdit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310270606033_productImageEditCurrection.resx">
+      <DependentUpon>202310270606033_productImageEditCurrection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
