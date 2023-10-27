@@ -2088,10 +2088,12 @@
     <Content Include="images\product\kisiye-ozel-baskili-kese-lavanta-kesesi-nisan-dugun-kina-soz-kina-kcm29363456-1-99800018e8014c068d2141e1f1712dda.jpg" />
     <Content Include="images\product\lavanta-suyu.jpg" />
     <Content Include="images\product\lavanta.png" />
+    <Content Include="images\product\lavantakesesi.png" />
     <Content Include="images\product\lavanta_k.jpg" />
     <Content Include="images\product\lavanta_kesesi.png" />
     <Content Include="images\product\lavanta_suyu.png" />
     <Content Include="images\product\organik-lavanta-yagi-min.jpg" />
+    <Content Include="images\product\product-04.jpg" />
     <Content Include="images\slide-01.jpg" />
     <Content Include="images\slide-02.jpg" />
     <Content Include="images\slide-03.jpg" />
@@ -2833,7 +2835,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\AdminProduct\Index.cshtml" />
     <Content Include="Views\AdminProduct\AddProduct.cshtml" />
     <Content Include="Views\AdminProduct\EditProduct.cshtml" />
@@ -2855,6 +2856,8 @@
     <Content Include="vendor\slick\slick.scss" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutCalisan.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

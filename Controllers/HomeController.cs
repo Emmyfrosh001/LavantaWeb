@@ -21,8 +21,6 @@ namespace AydinogluLavender.Controllers
             List<Category> categorylist = cm.GetAktifAllList();
             ViewBag.categoriler = categorylist;
 
-            ViewData["categoryList"]=categorylist;
-
             var productlist = pm.GetAktifList();
             return View(productlist);
         }

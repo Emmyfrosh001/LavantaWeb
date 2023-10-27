@@ -1,0 +1,84 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Ürün Güncelle</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">AdminProduct</a></li>
+                        <li class="breadcrumb-item active">EditProduct</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            @using (Html.BeginForm("EditProduct", "AdminProduct", FormMethod.Post))
+                            {
+
+                                <div class="form-group col-md-6" style="padding-left: 45px">
+                                    @Html.HiddenFor(x => x.ProductID, new { @class = "form-control" })
+                                    @Html.Label("Ürün Adı:")
+                                    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+                                    <p style="color:red"> @Html.ValidationMessageFor(x => x.ProductName) </p>
+
+                                    @Html.Label("Ürün Açıklaması:")
+                                    @Html.TextAreaFor(x => x.ProductDescription, new { @class = "form-control" })
+
+                                    @Html.Label("Ürün Stok Sayısı:")
+                                    @Html.TextBoxFor(x => x.ProductStock, new { @class = "form-control" })
+
+                                    @Html.Label("Ürün Fiyatı:")
+                                    @Html.TextBoxFor(x => x.ProductPrice, new { @class = "form-control" })
+
+                                    @Html.Label("Ürün Kategorisi:")
+                                    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.categoriler, new { @class = "form-control" })
+                                    <p style="color:red">@Html.ValidationMessageFor(x => x.CategoryID)</p>
+
+                                    @Html.Label("Ürün Açıklaması:")
+                                    @Html.TextBoxFor(x => x.ProductDescription, new { @class = "form-control" })
+
+
+                                    @*Üst kategory*@
+
+                                    @Html.Label("Ürün Durumu:")
+                                    @Html.DropDownList("ProductStatus", new List<SelectListItem>
+                                    {
+                                          new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
+                                          new SelectListItem { Text = "Pasif", Value = "false"}
+                                    }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
+
+                                    <br />
+                                    <button class="btn btn-success">Ürünü Ekle</button>
+                                    <a href="/AdminProduct/Index" class="btn btn-secondary">Geri</a>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ./row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

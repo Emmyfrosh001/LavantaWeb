@@ -1,0 +1,128 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string statusbtn = "danger";
+    string durumbutton = "";
+    string durumbuttoncolor = "";}}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Kategori</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li><a href="/AdminCategory/AddCategory" class="btn btn-success"> Kategori Ekle </a> </li>  &nbsp;&nbsp;
+                        <li class="breadcrumb-item"><a href="#">AdminCategory</a></li>
+                        <li class="breadcrumb-item active">Index</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategoriler</font></font></h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th @*style="width: 10px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ktg ID</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori</font></font></th>
+                                                <th @*style="width: 40px"*@><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Sayısı</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Üst Kategori</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori Durumu</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Güncelle</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sil</font></font></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryID</font></font></th>
+                                                    <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.CategoryName</font></font></td>
+                                                    <td><span class="badge bg-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">55</font></font></span></td>
+                                                    <td>
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;">
+                                                                @if (item.CategoryUst == 0)
+                                                                {
+                                                                    <font>Ana Kategori</font>
+                                                                }
+                                                            </font>
+                                                        </font>
+                                                    </td>
+                                                    <td>
+                                                        @if (item.CategoryStatus)
+                                                        { statusbtn = "success"; }
+                                                        else { statusbtn = "danger"; }
+                                                        <font style="vertical-align: inherit;">
+                                                            <font class="badge badge-@statusbtn" style="vertical-align: inherit;">
+                                                                @if (item.CategoryStatus)
+                                                                {<font>Aktif</font> }
+                                                                else
+                                                                {<font>Pasif</font>}
+                                                            </font>
+                                                        </font>
+                                                    </td>
+                                                    <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-primary btn-sm">Güncelle</a></td>
+                                                    @*<td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger btn-sm">Sil</a></td>*@
+                                                    <td>
+                                                        @if (item.CategoryStatus)
+                                                        {
+                                                            durumbuttoncolor = "danger";
+                                                            durumbutton = "fas fa-trash";
+                                                        }
+                                                        else
+                                                        {
+                                                            durumbuttoncolor = "success";
+                                                            durumbutton = "fas fa-plus-square";
+                                                        }
+                                                        <a class="btn btn-@durumbuttoncolor btn-sm" href="/AdminCategory/DeleteCategory/@item.CategoryID">
+                                                            <i class="@durumbutton">
+                                                            </i>
+                                                            @if (item.CategoryStatus)
+                                                            {
+                                                                <font>Pasif Yap</font> }
+                                                            else
+                                                            {
+                                                                <font>Aktif Yap</font>}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ./row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

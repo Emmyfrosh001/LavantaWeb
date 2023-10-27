@@ -1,0 +1,114 @@
+﻿@using EntityLayer.Concrete
+@model List<User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string statusbtn = "danger";}
+
+<head>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/admin_template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/admin_template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+</head>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Kullanıcılar</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li><a href="/User/AddUser" class="btn btn-success"> Kullanıcı Ekle </a> </li>  &nbsp;&nbsp;
+                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item active">Index</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            @*<p>Veriler bu alanda olacak</p>*@
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>User ID</th>
+                                                <th>Kullanıcı Adı Soyadı</th>
+                                                <th>Mail Adresi</th>
+                                                <th>İl</th>
+                                                <th>İlçe</th>
+                                                <th>Durumu</th>
+                                                <th>Güncelle</th>
+                                                <th>Sil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.UserID</td>
+                                                    <td>@item.UserName @item.UserSurname</td>
+                                                    <td>@item.UserMail</td>
+                                                    <td>@item.UserCity</td>
+                                                    <td>@item.UserDistrict</td>
+                                                    <td>
+                                                        @if (item.UserStatus)
+                                                        { statusbtn = "success"; }
+                                                        else { statusbtn = "danger"; }
+                                                        <font style="vertical-align: inherit;">
+                                                            <font class="badge badge-@statusbtn" style="vertical-align: inherit;">
+                                                                @if (item.UserStatus)
+                                                                {<font>Aktif</font> }
+                                                                else
+                                                                {<font>Pasif</font>}
+                                                            </font>
+                                                        </font>
+                                                    </td>
+                                                    <td><a href="/User/EditUser/@item.UserID" class="btn btn-primary btn-sm">Güncelle</a></td>
+                                                    <td><a href="/User/DeleteUser/@item.UserID" class="btn btn-danger btn-sm">Sil</a></td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                            
+                                        <tfoot>
+                                            <tr>
+                                                <th>User ID</th>
+                                                <th>Kullanıcı Adı Soyadı</th>
+                                                <th>Mail Adresi</th>
+                                                <th>İl</th>
+                                                <th>İlçe</th>
+                                                <th>Durumu</th>
+                                                <th>Güncelle</th>
+                                                <th>Sil</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ./row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
