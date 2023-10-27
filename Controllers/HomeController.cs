@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,12 @@ namespace AydinogluLavender.Controllers
 {
     public class HomeController : Controller
     {
+
+        ProductManager pm = new ProductManager(new EfProductDal());
         public ActionResult Index()
         {
-            return View();
+            var productlist = pm.GetAktifList();
+            return View(productlist);
         }
 
         public ActionResult About()
