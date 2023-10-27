@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,16 @@ namespace AydinogluLavender.Controllers
     {
 
         ProductManager pm = new ProductManager(new EfProductDal());
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
+
+            //List<SelectListItem> categorylist = (from x in cm.GetAktifAllList() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryID.ToString() }).ToList();
+            List<Category> categorylist = cm.GetAktifAllList();
+            ViewBag.categoriler = categorylist;
+
+            ViewData["categoryList"]=categorylist;
+
             var productlist = pm.GetAktifList();
             return View(productlist);
         }
