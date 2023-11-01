@@ -20,7 +20,7 @@ namespace AydinogluLavender.Controllers
             //List<SelectListItem> categorylist = (from x in cm.GetAktifAllList() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryID.ToString() }).ToList();
             List<Category> categorylist = cm.GetAktifAllList();
             ViewBag.categoriler = categorylist;
-
+            ViewBag.HomeIndex = true;
             var productlist = pm.GetAktifList();
             return View(productlist);
         }
