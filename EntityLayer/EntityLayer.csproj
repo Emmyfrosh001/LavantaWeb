@@ -60,6 +60,7 @@
     <Compile Include="Concrete\OrderDetail.cs" />
     <Compile Include="Concrete\Product.cs" />
     <Compile Include="Concrete\ProductImage.cs" />
+    <Compile Include="Concrete\ShoppingCart.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,11 +16,11 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string ProductName { get; set; } //Ürün Adı
         [StringLength(250)]
+        public string ProductDetail { get; set; }  //Ürün Detayı
+        [StringLength(2048)]
         public string ProductDescription { get; set; }  //Ürün Açıklaması
         public int ProductStock { get; set; }  //Ürün Stok Sayısı
         public float ProductPrice { get; set; }  //Ürün Fiyatı
-        [StringLength(250)]
-        public string ProductNote { get; set; }  //Ürün Notu
         public bool ProductStatus { get; set; }  //Ürün Durumu
 
         [StringLength(200)]
@@ -33,8 +33,8 @@ namespace EntityLayer.Concrete
         public float ProductDiscount { get; set; } //Ürün indirim Miktarı
         public bool ProductDiscountStatus { get; set; }  //Ürün İndirim Durumu
         public int ProductDetailObserveCount { get; set; }  //Ürün Detay görüntülenme sayısı
-        public int ProductBasketInsertCount { get; set; }  //Ürün Sepete Ekleme Sayısı
-        public int ProductBasketDeleteCount { get; set; }  //Ürün Sepetten Silinme Sayısı
+        public int ProductShoppingCartInsertCount { get; set; }  //Ürün Sepete Ekleme Sayısı
+        public int ProductShoppingCartDeleteCount { get; set; }  //Ürün Sepetten Silinme Sayısı
         public int ProductSellCount { get; set; }  //Ürün Satın alınma sayısı
         public int ProductReturnCount { get; set; }  //Ürün Iade sayısı
 
@@ -46,6 +46,6 @@ namespace EntityLayer.Concrete
 
         public ICollection<Comment> Comments{ get; set; }    //Yorum Tablosu ile ilişkilendirme
 
-        public ICollection<Basket> Baskets { get; set; }  //Sepet tablosu ile ilişkilendirme
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; }  //Sepet tablosu ile ilişkilendirme
     }
 }

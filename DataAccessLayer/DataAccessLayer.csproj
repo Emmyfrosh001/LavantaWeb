@@ -61,6 +61,7 @@
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IProductImageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IShoppingCartDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="EntityFramework\EfOrderDetailDal.cs" />
     <Compile Include="EntityFramework\EfProductDal.cs" />
     <Compile Include="EntityFramework\EfProductImageDal.cs" />
+    <Compile Include="EntityFramework\EfShoppingCartDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
     <Compile Include="Migrations\202310141929391_userUpdateSutun.cs" />
     <Compile Include="Migrations\202310141929391_userUpdateSutun.designer.cs">
@@ -93,6 +95,14 @@
     <Compile Include="Migrations\202310270606033_productImageEditCurrection.cs" />
     <Compile Include="Migrations\202310270606033_productImageEditCurrection.designer.cs">
       <DependentUpon>202310270606033_productImageEditCurrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311112016255_ShoppingCartAdd.cs" />
+    <Compile Include="Migrations\202311112016255_ShoppingCartAdd.designer.cs">
+      <DependentUpon>202311112016255_ShoppingCartAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311112018109_ShoppingCartEdit.cs" />
+    <Compile Include="Migrations\202311112018109_ShoppingCartEdit.designer.cs">
+      <DependentUpon>202311112018109_ShoppingCartEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310270606033_productImageEditCurrection.resx">
       <DependentUpon>202310270606033_productImageEditCurrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311112016255_ShoppingCartAdd.resx">
+      <DependentUpon>202311112016255_ShoppingCartAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311112018109_ShoppingCartEdit.resx">
+      <DependentUpon>202311112018109_ShoppingCartEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

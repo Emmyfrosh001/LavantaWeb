@@ -33,6 +33,6 @@ namespace EntityLayer.Concrete
 
         public ICollection<Order> Orders { get; set; }    //Sipariş Tablosu ile ilişkilendirme
         public ICollection<Comment> Comments { get; set; }     //Yorum Tablosu ile ilişkilendirme
-        public ICollection<Basket>Baskets{ get; set; }     //Yorum Tablosu ile ilişkilendirme
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; }     //Yorum Tablosu ile ilişkilendirme
     }
 }
