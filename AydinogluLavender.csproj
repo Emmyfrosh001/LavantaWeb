@@ -2215,6 +2215,7 @@
     <Content Include="template\js\main.js" />
     <Content Include="template\js\map-custom.js" />
     <Content Include="template\js\slick-custom.js" />
+    <Content Include="template\product-detail - Copy.html" />
     <Content Include="template\product-detail.html" />
     <Content Include="template\product.html" />
     <Content Include="template\shoping-cart.html" />
@@ -2856,9 +2857,10 @@
     <Content Include="vendor\slick\slick.less" />
     <Content Include="vendor\slick\slick.scss" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutCalisan.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Details - Copy.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy %282%29.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
