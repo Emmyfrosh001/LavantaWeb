@@ -10,8 +10,9 @@ namespace BusinessLayer.Abstract
     public interface IShoppingCartService
     {
         List<ShoppingCart> GetAllList();
-        List<ShoppingCart> GetUserList();
+        List<ShoppingCart> GetUserList(int id);
         void AddShoppingCartBl(ShoppingCart shoppingCart);
+        ShoppingCart GetByID(int UserId, int ProductId);
         ShoppingCart GetByID(int id);
         void UpdateShoppingCartBl(ShoppingCart shoppingCart);
         void DeleteShoppingCartBl(ShoppingCart shoppingCart);

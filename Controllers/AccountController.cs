@@ -32,7 +32,7 @@ namespace AydinogluLavender.Controllers
             var userlogininfo = c.Users.FirstOrDefault(x => x.UserMail == login.UserMail && x.UserPassword == login.UserPassword);
             if (userlogininfo != null)
             {
-                
+
                 Session["UserMail"] = userlogininfo.UserMail;
                 return RedirectToAction("Index", "Home");
             }
@@ -47,6 +47,5 @@ namespace AydinogluLavender.Controllers
             Session["UserMail"] = null;
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

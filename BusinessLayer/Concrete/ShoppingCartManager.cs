@@ -37,9 +37,14 @@ namespace BusinessLayer.Concrete
             return _shoppingCartDal.Get(x => x.CartID == id);
         }
 
-        public List<ShoppingCart> GetUserList()
+        public ShoppingCart GetByID(int UserId, int ProductId)
         {
-            return _shoppingCartDal.List(x => x.UserID == 1);
+            return _shoppingCartDal.Get(x => x.UserID == UserId && x.ProductID== ProductId);
+        }
+
+        public List<ShoppingCart> GetUserList(int id)
+        {
+            return _shoppingCartDal.List(x => x.UserID == id);
         }
 
         public void UpdateShoppingCartBl(ShoppingCart shoppingCart)

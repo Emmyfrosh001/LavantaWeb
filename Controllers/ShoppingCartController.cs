@@ -12,10 +12,18 @@ namespace AydinogluLavender.Controllers
     public class ShoppingCartController : Controller
     {
         ShoppingCartManager scm = new ShoppingCartManager(new EfShoppingCartDal());
+        UserManager um=new UserManager(new EfUserDal());
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserMail"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var UserInfo = um.GetBySession(Session["UserMail"].ToString());
+            int UserIdInfo = UserInfo.UserID;
+            var cartlist=scm.GetUserList(UserIdInfo);
+            return View(cartlist);
         }
         [HttpGet]
         public ActionResult AddCart()
@@ -25,10 +33,36 @@ namespace AydinogluLavender.Controllers
         [HttpPost]
         public ActionResult AddCart(ShoppingCart cart)
         {
-            //scm.AddShoppingCartBl(cart);
+            if (Session["UserMail"] == null) 
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var UserInfo = um.GetBySession(Session["UserMail"].ToString());
+            cart.UserID = UserInfo.UserID;
+            var CartInfo=scm.GetByID(cart.UserID,cart.ProductID);
+            if(CartInfo == null) 
+            {
+                scm.AddShoppingCartBl(cart);
+            }
+            else
+            {
+                CartInfo.ProductPiece=cart.ProductPiece+CartInfo.ProductPiece;
+                scm.UpdateShoppingCartBl(CartInfo);
+            }
+
             int productid = cart.ProductID;
             string productdetails = "details/"+productid;
             return RedirectToAction(productdetails, "Product");
+        }
+        public ActionResult DeleteCart(int id)
+        {
+            var cartinfo = scm.GetByID(id);
+            scm.DeleteShoppingCartBl((ShoppingCart)cartinfo);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Trade()
+        {
+            return View();
         }
     }
 }

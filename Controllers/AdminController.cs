@@ -41,7 +41,6 @@ namespace AydinogluLavender.Controllers
             {
                 return RedirectToAction("Login");
             }
-            return View();
         }
         public ActionResult Logout()
         {
