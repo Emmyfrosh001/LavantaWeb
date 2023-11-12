@@ -11,8 +11,10 @@ namespace BusinessLayer.Abstract
     {
         List<User> GetAllList();
         User GetByID(int id);
+        User GetBySession(string session);
         void AddUserBl(User user);
         void UpdateUserBl(User user);
         void DeleteUserBl(User user);
+
     }
 }

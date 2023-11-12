@@ -38,6 +38,12 @@ namespace BusinessLayer.Concrete
             return _userDal.Get(x=>x.UserID==id);
         }
 
+        public User GetBySession(string session)
+        {
+
+            return _userDal.Get(x => x.UserMail == session);
+        }
+
         public void UpdateUserBl(User user)
         {
             _userDal.Update(user);

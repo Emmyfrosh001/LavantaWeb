@@ -104,6 +104,10 @@
     <Compile Include="Migrations\202311112018109_ShoppingCartEdit.designer.cs">
       <DependentUpon>202311112018109_ShoppingCartEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311121113163_addAdminTable.cs" />
+    <Compile Include="Migrations\202311121113163_addAdminTable.designer.cs">
+      <DependentUpon>202311121113163_addAdminTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311112018109_ShoppingCartEdit.resx">
       <DependentUpon>202311112018109_ShoppingCartEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311121113163_addAdminTable.resx">
+      <DependentUpon>202311121113163_addAdminTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
