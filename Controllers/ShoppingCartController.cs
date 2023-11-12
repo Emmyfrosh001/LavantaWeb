@@ -49,7 +49,7 @@ namespace AydinogluLavender.Controllers
                 CartInfo.ProductPiece=cart.ProductPiece+CartInfo.ProductPiece;
                 scm.UpdateShoppingCartBl(CartInfo);
             }
-
+            Session["statusAdd"] = "Basarili";
             int productid = cart.ProductID;
             string productdetails = "details/"+productid;
             return RedirectToAction(productdetails, "Product");

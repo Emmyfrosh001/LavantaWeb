@@ -1,8 +1,80 @@
-﻿
+﻿@*@{
+        ViewBag.Title = "Trade";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
 @{
     ViewBag.Title = "Trade";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Ödeme Sayfası Yapım Aşamasındadır</h2>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yazılım Bilişim</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div id="uyari" title="YazilimBilisim.net" style="display:none;">
+        <p>
+            Bu dialog kutusu sayfanın açılışında kullanıcılara gösterilmekteidr.
+        </p>
+        <img src="https://source.unsplash.com/random" width="100%">
+    </div>
+
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        $(function () {
+            // sayfa açılışında dialog kutusunun gelmesi için her hangi bir buton için yerleştirmedik
+            $("#uyari").dialog({
+                width: 600, //dialog kutusunun genişliği
+                modal: true, //arkaplanın koyu olması
+                autoOpen: true, //gerek yok ama otomatik açılması için
+                position: { my: "center top", at: "center top" } //konum
+            });
+        })
+
+    </script>
+</body>
+</html>
