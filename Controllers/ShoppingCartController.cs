@@ -57,12 +57,20 @@ namespace AydinogluLavender.Controllers
         public ActionResult DeleteCart(int id)
         {
             var cartinfo = scm.GetByID(id);
-            scm.DeleteShoppingCartBl((ShoppingCart)cartinfo);
+            scm.DeleteShoppingCartBl(cartinfo);
             return RedirectToAction("Index");
         }
         public ActionResult Trade()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult UpdateCart(ShoppingCart shoppingCartInfo)
+        {
+            var UserInfo = um.GetBySession(Session["UserMail"].ToString());
+            shoppingCartInfo.UserID = UserInfo.UserID;
+            scm.UpdateShoppingCartBl(shoppingCartInfo);
+            return RedirectToAction("Index");
         }
     }
 }
