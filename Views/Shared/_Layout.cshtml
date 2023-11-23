@@ -43,8 +43,8 @@
     {
         @:<header>
         }
-        else
-        {
+    else
+    {
             @:<header class="header-v4">
             }
 
@@ -481,7 +481,7 @@
         </div>
     </div>
 </div>
-    
+
 <!--===============================================================================================-->
 <script src="~/template/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -582,18 +582,18 @@
 </script>
 <!--===============================================================================================-->
 <script src="~/template/js/main.js"></script>
-@*<script>
-    var statusAdd = @Session["statusAdd"];
-    $(document).ready(function () {
-        if (@Session["statusAdd"] == "Basarili") {
+
+
+
+@if (Session["statusAdd"] == "Basarili")
+{
+    Session["statusAdd"] = null;
+    <script>
+        window.onload = function () {
             swal("Ürününüz başarıyla sepetinize eklenmiştir!", "", "success");
         }
-        else {
-            swal("Ürününüz  sepetinize eklenmiştir!", "", "success");
-        }
-
-    });
-</script>*@
+    </script>
+}
 
 </body>
 </html>
