@@ -29,7 +29,7 @@ namespace BusinessLayer.Concrete
 
         public List<ShoppingCart> GetAllList()
         {
-            throw new NotImplementedException();
+            return _shoppingCartDal.List();
         }
 
         public ShoppingCart GetByID(int id)
