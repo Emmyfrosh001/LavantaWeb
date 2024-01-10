@@ -120,5 +120,9 @@ namespace AydinogluLavender.Controllers
             }
             return RedirectToAction("Order", "Account");
         }
+        public ActionResult Payment()
+        {
+            return View();
+        }
     }
 }
