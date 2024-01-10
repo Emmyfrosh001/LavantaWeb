@@ -114,7 +114,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
 
                     <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
@@ -169,3 +169,17 @@
 
 </section>
 
+@section OzelScript
+{
+
+@if (Session["statusAdd"] == "Basarili")
+{
+    Session["statusAdd"] = null;
+    <script>
+        window.onload = function () {
+            swal("Ürününüz başarıyla sepetinize eklenmiştir!", "", "success");
+        }
+    </script>
+}
+
+}

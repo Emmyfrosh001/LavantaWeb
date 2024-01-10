@@ -22,3 +22,5 @@ C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAcce
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.ShoppingCartAdd.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.ShoppingCartEdit.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.addAdminTable.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.OrderCargoNumberAdd.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.AdminAdminRoleEdit.resources

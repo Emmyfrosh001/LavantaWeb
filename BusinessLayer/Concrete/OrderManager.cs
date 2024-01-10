@@ -30,17 +30,27 @@ namespace BusinessLayer.Concrete
 
         public Order GetByID(int id)
         {
-            return _orderDal.Get(x=>x.OrderID==id);
+            return _orderDal.Get(x => x.OrderID == id);
         }
 
-        public List<Order> GetUserList(int UserId)
+        public int FindOrderId(int UserId, DateTime datetime)
         {
-            return _orderDal.List(x=>x.UserID==UserId);
+            return _orderDal.Get(x => x.UserID == UserId && x.OrderDateTime == datetime).OrderID;
+        }
+
+        public List<Order> GetOrderUserList(int UserId)
+        {
+            return _orderDal.List(x => x.UserID == UserId);
         }
 
         public void UpdateOrderBl(Order order)
         {
             _orderDal.Update(order);
+        }
+
+        public Order GetOrderId(int UserId, DateTime datetime)
+        {
+            return _orderDal.Get(x => x.UserID == UserId && x.OrderDateTime == datetime);
         }
     }
 }

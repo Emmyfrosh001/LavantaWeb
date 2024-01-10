@@ -26,6 +26,9 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string OrderCargoPrice { get; set; } //Sipariş Kargo Ücreti
 
+        [StringLength(50)]
+        public string OrderCargoNumber { get; set; } //Sipariş Kargo Takip Numarası
+
         public int UserID { get; set; }  //Kullanıcı ID
         public virtual User User { get; set; }    //Kullanıcı Tablosu ile ilişkilendirme
 

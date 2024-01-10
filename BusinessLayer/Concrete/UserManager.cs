@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,11 @@ namespace BusinessLayer.Concrete
             _userDal.Delete(user);
         }
 
+        public int FindUserIdByCookies(string cookies)
+        {
+            return _userDal.Get(x => x.UserMail == cookies).UserID;
+        }
+
         public List<User> GetAllList()
         {
             return _userDal.List();
@@ -38,10 +44,9 @@ namespace BusinessLayer.Concrete
             return _userDal.Get(x=>x.UserID==id);
         }
 
-        public User GetBySession(string session)
+        public User GetByCookies(string cookies)
         {
-
-            return _userDal.Get(x => x.UserMail == session);
+            return _userDal.Get(x => x.UserMail == cookies);
         }
 
         public void UpdateUserBl(User user)

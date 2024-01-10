@@ -1951,6 +1951,9 @@ input.num-product::-webkit-inner-spin-button {
 .table-shopping-cart .table_row {
   height: 185px;
 }
+.table-shopping-cart .Detailtable_row {
+  height: 100px;
+}
 
 .table-shopping-cart .table_row td {
   padding-bottom: 20px;

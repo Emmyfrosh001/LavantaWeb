@@ -12,12 +12,11 @@ namespace AydinogluLavender.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        [Authorize]
         public ActionResult Index()
         {
             if (Session["AdminName"] ==null)
             {
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("Login", "Admin");
             }
             return View();
         }
@@ -33,9 +32,16 @@ namespace AydinogluLavender.Controllers
             var adminlogininfo=c.Admins.FirstOrDefault(x=>x.AdminName==admin.AdminName && x.AdminPassword==admin.AdminPassword);
             if (adminlogininfo!=null) 
             {
+                HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavenderAdmin");
+                AydinogluLavenderCookie["AdminName"] = adminlogininfo.AdminName;
+                AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(AydinogluLavenderCookie);
+
+
                 FormsAuthentication.SetAuthCookie(adminlogininfo.AdminName, false);
                 Session["AdminName"] = adminlogininfo.AdminName;
-                return RedirectToAction("Index","AdminCategory");
+                //return RedirectToAction("Index", "AdminCategory");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -44,9 +50,15 @@ namespace AydinogluLavender.Controllers
         }
         public ActionResult Logout()
         {
+
+            HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavenderAdmin");
+            AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(AydinogluLavenderCookie);
+
             FormsAuthentication.SignOut();
-            Session["UserMail"] = null;
-            return RedirectToAction("Index", "Home");
+            Session["AdminName"] = null;
+            Session.Abandon();
+            return RedirectToAction("Login", "Admin");
         }
     }
 }

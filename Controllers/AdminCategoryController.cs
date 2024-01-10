@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace AydinogluLavender.Controllers
 {
+    [Authorize(Roles = "AdmAL")]//Aouhorize komutunu kontroller seviyesine çıkarma
     public class AdminCategoryController : Controller
     {
 
