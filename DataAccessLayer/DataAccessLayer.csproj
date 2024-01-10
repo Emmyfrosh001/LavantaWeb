@@ -62,6 +62,7 @@
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IProductImageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISettingDal.cs" />
     <Compile Include="Abstract\IShoppingCartDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\Context.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="EntityFramework\EfOrderDetailDal.cs" />
     <Compile Include="EntityFramework\EfProductDal.cs" />
     <Compile Include="EntityFramework\EfProductImageDal.cs" />
+    <Compile Include="EntityFramework\EfSettingDal.cs" />
     <Compile Include="EntityFramework\EfShoppingCartDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
     <Compile Include="Migrations\202310141929391_userUpdateSutun.cs" />
@@ -117,6 +119,10 @@
     <Compile Include="Migrations\202312030202365_AdminAdminRoleEdit.cs" />
     <Compile Include="Migrations\202312030202365_AdminAdminRoleEdit.designer.cs">
       <DependentUpon>202312030202365_AdminAdminRoleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401100230221_SettingTableAdd.cs" />
+    <Compile Include="Migrations\202401100230221_SettingTableAdd.designer.cs">
+      <DependentUpon>202401100230221_SettingTableAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312030202365_AdminAdminRoleEdit.resx">
       <DependentUpon>202312030202365_AdminAdminRoleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401100230221_SettingTableAdd.resx">
+      <DependentUpon>202401100230221_SettingTableAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
