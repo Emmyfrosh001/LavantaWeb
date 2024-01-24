@@ -17,38 +17,49 @@
         <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
             <div class="m-l-25 m-r--38 m-lr-0-xl">
                 <div class="wrap-table-shopping-cart">
+                    <form>
+                        <table class="table-shopping-cart">
+                            <tr>
+                                <th>
+                                    <div style="margin:30px 30px 0px 30px">
+                                        <h4 class="mtext-109 cl2 p-b-30">
+                                            Kredi Kartı
+                                        </h4>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="margin:10px 30px 10px 30px">
+                                        Kredi Kartı Numarası <br />
+                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" style="width: 350px;" type="text" name="CartNumber" placeholder="Kredi Kartı Numarası" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="margin:10px 30px 10px 30px">
+                                        Ad Soyad <br />
+                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" style="width:350px" type="text" name="name" placeholder="Ad Soyad" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="margin:10px 30px 10px 30px">
+                                        Kullanım Tarihi <br />
+                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="date" placeholder=" Kullanım Tarihi" disabled>
+                                    </div>
+                                </td>
+                                <td>
 
-                    <table class="table-shopping-cart">
-                        <tr>
-                            <th>
-                                <h4 class="mtext-109 cl2 p-b-30">
-                                    Kredi Kartı
-                                </h4>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                Kredi Kartı Numarası <br />
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="CartNumber" placeholder="Kredi Kartı Numarası">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Ad Soyad <br />
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="name" placeholder="Ad Soyad">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Kullanım Tarihi <br />
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="date" placeholder=" Kullanım Tarihi">
-                            </td>
-                            <td>
-                                CVC Numarası <br />
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="CVC" placeholder="CVC Numarası">
-                            </td>
-                        </tr>
-                    </table>
+                                    CVC Numarası <br />
+
+                                    <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="CVC" placeholder="CVC Numarası" disabled>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
 
                 <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
@@ -60,9 +71,14 @@
                             </div>
                         </div>*@
 
-                    <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                        Ödemeyi Tamamla
+                    <div style="margin-left:-10px">
+                        <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="btnPayment">
+                            Alışverişi Tamamla
+                        </button>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -143,3 +159,16 @@
 </div>
 
 
+@section OzelScript
+{
+
+
+    <script>
+        $('#btnPayment').click(function () {
+            swal("Ödeme Tamamlanamadı!", "Websitemiz yapım aşamasındadır.", "error");
+
+        });
+    </script>
+
+
+}

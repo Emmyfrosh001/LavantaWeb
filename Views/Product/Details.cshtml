@@ -171,15 +171,31 @@
 
 @section OzelScript
 {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if (Session["statusAdd"] == "Basarili")
-{
-    Session["statusAdd"] = null;
-    <script>
-        window.onload = function () {
-            swal("Ürününüz başarıyla sepetinize eklenmiştir!", "", "success");
-        }
-    </script>
-}
+
+    @if (Session["statusAdd"] == "Basarili")
+    {
+        Session["statusAdd"] = null;
+        @*<script>
+                window.onload = function () {
+                    swal("Ürününüz başarıyla sepetinize eklenmiştir!", "", "success");
+                }
+            </script>*@
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "success",
+                    title: "Ürününüz başarıyla sepetinize eklenmiştir!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+
+
+    }
 
 }
