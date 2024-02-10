@@ -40,7 +40,7 @@
                                 <td>
                                     <div style="margin:10px 30px 10px 30px">
                                         Ad Soyad <br />
-                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" style="width:350px" type="text" name="name" placeholder="Ad Soyad" disabled>
+                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" style="width:350px;" type="text" name="name" placeholder="Ad Soyad" disabled>
                                     </div>
                                 </td>
                             </tr>
@@ -50,12 +50,22 @@
                                         Kullanım Tarihi <br />
                                         <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="date" placeholder=" Kullanım Tarihi" disabled>
                                     </div>
-                                </td>
-                                <td>
 
-                                    CVC Numarası <br />
+                                    <script type="text/javascript">//
+                                        var viewportGenislik = window.innerWidth;
 
-                                    <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="CVC" placeholder="CVC Numarası" disabled>
+                                        if (viewportGenislik >= 720) {
+
+                                            document.write('</td ><td>');
+                                        }
+
+                                    </script>
+
+
+                                    <div style="margin:10px 30px 10px 30px">
+                                        CVC Numarası <br />
+                                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="CVC" placeholder="CVC Numarası" disabled>
+                                    </div>
                                 </td>
                             </tr>
                         </table>

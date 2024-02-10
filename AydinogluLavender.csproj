@@ -2128,6 +2128,7 @@
     <Content Include="template\blog.html" />
     <Content Include="template\contact.html" />
     <Content Include="template\css\main.css" />
+    <Content Include="template\css\style.css" />
     <Content Include="template\css\util.css" />
     <Content Include="template\fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="template\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -3097,6 +3098,7 @@
     <Content Include="Views\Account\Order.cshtml" />
     <Content Include="Views\Account\OrderDetail.cshtml" />
     <Content Include="Views\ShoppingCart\Payment.cshtml" />
+    <Content Include="Views\ShoppingCart\Payment - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
