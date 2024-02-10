@@ -51,12 +51,15 @@
                                         <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="date" placeholder=" Kullanım Tarihi" disabled>
                                     </div>
 
-                                    <script type="text/javascript">//
+                                    <script type="text/javascript"> //Ekran genişliği 720 px'in altında olduğunda CVC alanı alt satıra alınacak
                                         var viewportGenislik = window.innerWidth;
 
                                         if (viewportGenislik >= 720) {
 
                                             document.write('</td ><td>');
+                                        }
+                                        else {
+                                            document.write('</td ><td></tr><tr><td>');
                                         }
 
                                     </script>
