@@ -17,6 +17,7 @@ namespace AydinogluLavender.Controllers
         UserManager um = new UserManager(new EfUserDal());
         UserValidator userValidator = new UserValidator();
 
+        // GET: User
         public ActionResult Index()
         {
             var uservalue=um.GetAllList(); 
@@ -34,7 +35,7 @@ namespace AydinogluLavender.Controllers
             if (results.IsValid)
             {
                 um.AddUserBl(kullanici);
-                return RedirectToAction("Index");
+                return RedirectToAction("/Index","User");
             }
             else
             {
@@ -59,7 +60,7 @@ namespace AydinogluLavender.Controllers
             if (results.IsValid)
             {
                 um.UpdateUserBl(user);
-                return RedirectToAction("Index");
+                return RedirectToAction("/Index", "User");
             }
             else
             {

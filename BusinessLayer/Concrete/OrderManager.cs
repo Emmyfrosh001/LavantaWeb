@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<Order> GetOrderUserList(int UserId)
         {
-            return _orderDal.List(x => x.UserID == UserId);
+            return _orderDal.List(x => x.UserID == UserId).OrderByDescending(x=>x.OrderID).ToList();
         }
 
         public void UpdateOrderBl(Order order)

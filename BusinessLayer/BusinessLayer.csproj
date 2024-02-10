@@ -65,6 +65,7 @@
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Abstract\IRoleService.cs" />
+    <Compile Include="Abstract\ISettingService.cs" />
     <Compile Include="Abstract\IShoppingCartService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Concrete\OrderManager.cs" />
     <Compile Include="Concrete\ProductManager.cs" />
     <Compile Include="Concrete\RoleManager.cs" />
+    <Compile Include="Concrete\SettingManager.cs" />
     <Compile Include="Concrete\ShoppingCartManager.cs" />
     <Compile Include="Concrete\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
