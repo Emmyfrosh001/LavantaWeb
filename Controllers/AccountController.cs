@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace AydinogluLavender.Controllers
 {
@@ -25,11 +26,23 @@ namespace AydinogluLavender.Controllers
             //{
             //    return RedirectToAction("Login");
             //}
-            if (Request.Cookies["AydinogluLavender"]?["UserMail"] ==null)
+
+            //--------
+            //Böyle bir cookie mevcut mu kontrol ediyoruz
+            string name = "AydinogluLavender";
+            if (Request.Cookies.AllKeys.Contains(name))
             {
-                return RedirectToAction("Login");
+                //böyle bir cookie varsa bize geri değeri döndürsün
+                return View();
             }
-            return View();
+            //return null;
+            //----------------
+
+            //if (Request.Cookies["AydinogluLavender"] == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
+            return RedirectToAction("Login");
         }
         [HttpGet]
         public ActionResult Login()
@@ -50,7 +63,7 @@ namespace AydinogluLavender.Controllers
                 AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(10);
                 Response.Cookies.Add(AydinogluLavenderCookie);
 
-                FormsAuthentication.SetAuthCookie(userlogininfo.UserMail, false);
+                FormsAuthentication.SetAuthCookie(userlogininfo.UserMail, true);
                 Session["UserMail"] = userlogininfo.UserMail;
                 return RedirectToAction("Index", "Home");
             }
@@ -59,7 +72,7 @@ namespace AydinogluLavender.Controllers
                 return RedirectToAction("Login");
             }
         }
-
+        [Authorize]//Yetkilendirme
         public ActionResult Order()
         {
             //int UserValue = um.FindUserIdBySession(Session["UserMail"].ToString());//User id yi Sessiondan bulma
@@ -67,6 +80,7 @@ namespace AydinogluLavender.Controllers
             var OrderValues = om.GetOrderUserList(UserValue); //Userın tüm siparişlerinin çekilmesi
             return View(OrderValues);
         }
+        [Authorize]//Yetkilendirme
         public ActionResult OrderDetail(int id)
         {
             int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());//User id yi Cookieden bulma

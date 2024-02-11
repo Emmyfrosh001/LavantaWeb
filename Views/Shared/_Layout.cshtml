@@ -146,10 +146,6 @@
                                         <li><a href="#">vs vs</a></li>
                                     </ul>
                                 </li>
-                            }
-
-                            @if (Request.Cookies["AydinogluLavender"] != null)
-                            {
                                 <li>
                                     <a href="/Account/Logout" title="Çıkış Yap" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
                                         <i class="zmdi zmdi-forward"><font size="4"> Çıkış Yap</font></i>
@@ -170,8 +166,64 @@
             <a href="index.html"><img src="~/template/images/icons/logo-01.png" alt="IMG-LOGO"></a>
         </div>
 
-        <!-- Icon header -->
+
         <div class="wrap-icon-header flex-w flex-r-m">
+
+            <div class="menu-desktop">
+                <ul class="main-menu">
+
+                    <li>
+                        <a href="/ShoppingCart/Index" title="Sepetim" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <i class="zmdi zmdi-shopping-cart"><font size="4"> Sepetim</font></i>
+                        </a>
+                    </li>
+                    @*@if (UserMail == null)*@
+                    @if (Request.Cookies["AydinogluLavender"] == null)
+                    {
+
+                        <li>
+                            <a href="/Account/Login" title="Giriş Yap" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
+                                <i class="zmdi zmdi-account">
+                                    <font size="4">
+
+                                        Giriş Yap
+
+                                    </font>
+                                </i>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                        <li>
+                            <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
+                                <i class="zmdi zmdi-account">
+                                    <font size="4">
+                                        @*Hesabım (@Session["UserMail"])*@
+                                        @UserMail
+                                    </font>
+                                </i>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li><a href="/Account/Index">Hesabım</a></li>
+                                <li><a href="/Account/Order">Siparişlerim</a></li>
+                                <li><a href="#">vs vs</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/Account/Logout" title="Çıkış Yap" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
+                                <i class="zmdi zmdi-forward"><font size="4"> Çıkış Yap</font></i>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- Icon header -->
+        @*<div class="wrap-icon-header flex-w flex-r-m">
 
             <a href="/ShoppingCart/Index" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
                 <i class="zmdi zmdi-shopping-cart"><font size="4">Sepetim</font></i>
@@ -183,7 +235,7 @@
             <a href="/Account/Logout" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
                 <i class="zmdi zmdi-forward"><font size="4">Çıkış Yap</font></i>
             </a>
-        </div>
+        </div>*@
 
         <!-- Button show menu -->
         <div class="btn-show-menu-mobile hamburger hamburger--squeeze">

@@ -38,7 +38,7 @@ namespace AydinogluLavender.Controllers
                 Response.Cookies.Add(AydinogluLavenderCookie);
 
 
-                FormsAuthentication.SetAuthCookie(adminlogininfo.AdminName, false);
+                FormsAuthentication.SetAuthCookie(adminlogininfo.AdminName, true);
                 Session["AdminName"] = adminlogininfo.AdminName;
                 //return RedirectToAction("Index", "AdminCategory");
                 return RedirectToAction("Index");
