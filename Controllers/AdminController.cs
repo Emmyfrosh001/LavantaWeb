@@ -3,9 +3,12 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace AydinogluLavender.Controllers
 {
@@ -29,6 +32,8 @@ namespace AydinogluLavender.Controllers
         public ActionResult Login(Admin admin)
         {
             Context c = new Context();
+            //string passwordHash = AccountController.MD5Hash(admin.AdminPassword.ToString());
+            string passwordHash = MD5Hash(admin.AdminPassword.ToString());
             var adminlogininfo=c.Admins.FirstOrDefault(x=>x.AdminName==admin.AdminName && x.AdminPassword==admin.AdminPassword);
             if (adminlogininfo!=null) 
             {
@@ -59,6 +64,18 @@ namespace AydinogluLavender.Controllers
             Session["AdminName"] = null;
             Session.Abandon();
             return RedirectToAction("Login", "Admin");
+        }
+        public static string MD5Hash(string text)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] dizi = Encoding.UTF8.GetBytes(text);
+            dizi = md5.ComputeHash(dizi);
+            StringBuilder sb = new StringBuilder();
+            foreach (byte ba in dizi)
+            {
+                sb.Append(ba.ToString("x2").ToLower());
+            }
+            return sb.ToString();
         }
     }
 }

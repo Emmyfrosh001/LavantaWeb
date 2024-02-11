@@ -132,6 +132,11 @@ namespace AydinogluLavender.Controllers
             AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(AydinogluLavenderCookie);
 
+            HttpCookie LoginCookie = new HttpCookie("LoginData");
+            //HttpContext.Response.Cookies.Set(LoginCookie);// Cookie'nin içini boşaltıyor
+            LoginCookie.Expires = DateTime.Now.AddDays(-1d);// Cookie'nin süresini geçmiş göstererek ortadan kaldırıyor
+            Response.Cookies.Add(LoginCookie);
+
             FormsAuthentication.SignOut();
             Session["UserMail"] = null;
             Session.Abandon();
