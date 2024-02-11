@@ -29,9 +29,9 @@ namespace BusinessLayer.Concrete
             _userDal.Delete(user);
         }
 
-        public int FindUserIdByCookies(string cookies)
+        public int FindUserIdByCookies(string cookies, string data)
         {
-            return _userDal.Get(x => x.UserMail == cookies).UserID;
+            return _userDal.Get(x => x.UserMail == cookies && x.LoginInfo == data).UserID;
         }
 
         public List<User> GetAllList()
@@ -41,7 +41,7 @@ namespace BusinessLayer.Concrete
 
         public User GetByID(int id)
         {
-            return _userDal.Get(x=>x.UserID==id);
+            return _userDal.Get(x => x.UserID == id);
         }
 
         public User GetByCookies(string cookies)

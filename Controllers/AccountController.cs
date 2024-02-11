@@ -5,6 +5,9 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -54,17 +57,28 @@ namespace AydinogluLavender.Controllers
         {
 
             Context c = new Context();
-            var userlogininfo = c.Users.FirstOrDefault(x => x.UserMail == login.UserMail && x.UserPassword == login.UserPassword && x.UserStatus==true);
+            string passwordHash = MD5Hash(login.UserPassword.ToString());
+            var userlogininfo = c.Users.FirstOrDefault(x => x.UserMail == login.UserMail && x.UserPassword == passwordHash && x.UserStatus==true);
             if (userlogininfo != null)
             {
+                string Encrypted = MD5Hash(DateTime.Now.ToString());
 
                 HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavender");
                 AydinogluLavenderCookie["UserMail"] = userlogininfo.UserMail;
                 AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(10);
                 Response.Cookies.Add(AydinogluLavenderCookie);
 
+                HttpCookie LoginCookie = new HttpCookie("LoginData");
+                LoginCookie.Values.Add("Data", Encrypted);
+                LoginCookie.Expires = DateTime.Now.AddDays(10);
+                Response.Cookies.Add(LoginCookie);
+
                 FormsAuthentication.SetAuthCookie(userlogininfo.UserMail, true);
                 Session["UserMail"] = userlogininfo.UserMail;
+
+                userlogininfo.LoginInfo = Encrypted;
+                um.UpdateUserBl(userlogininfo);
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -72,18 +86,32 @@ namespace AydinogluLavender.Controllers
                 return RedirectToAction("Login");
             }
         }
+        public static string MD5Hash(string text)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] dizi = Encoding.UTF8.GetBytes(text);
+            dizi = md5.ComputeHash(dizi);
+            StringBuilder sb = new StringBuilder();
+            foreach (byte ba in dizi)
+            {
+                sb.Append(ba.ToString("x2").ToLower());
+            }
+            return sb.ToString();
+        }
+       
+
         [Authorize]//Yetkilendirme
         public ActionResult Order()
         {
             //int UserValue = um.FindUserIdBySession(Session["UserMail"].ToString());//User id yi Sessiondan bulma
-            int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());//User id yi Cookieden bulma
+            int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
             var OrderValues = om.GetOrderUserList(UserValue); //Userın tüm siparişlerinin çekilmesi
             return View(OrderValues);
         }
         [Authorize]//Yetkilendirme
         public ActionResult OrderDetail(int id)
         {
-            int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());//User id yi Cookieden bulma
+            int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
             var OrderValues = om.GetOrderUserList(UserValue);
             ViewBag.OrderInfo = null;
             foreach (var item in OrderValues)

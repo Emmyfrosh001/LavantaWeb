@@ -27,6 +27,8 @@ namespace EntityLayer.Concrete
         public string UserCity { get; set; }     //Kullanıcının Yaşadığı Şehir
         [StringLength(16)]
         public string UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
+        [StringLength(33)]
+        public string LoginInfo { get; set; }     //Login Bilgisi Şifreli
         [StringLength(250)]
         public string UserAddress { get; set; }     //Kullanıcının açık adresi
         public bool UserStatus { get; set; }     //Kullanıcı Durumu (Websitesine erişimi olacak mı engellenecek mi)

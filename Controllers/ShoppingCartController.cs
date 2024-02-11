@@ -27,8 +27,7 @@ namespace AydinogluLavender.Controllers
                 return RedirectToAction("Login", "Account");
             }
             //var UserInfo = um.GetBySession(Session["UserMail"].ToString());
-            var UserInfo = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
-            int UserIdInfo = UserInfo.UserID;
+            int UserIdInfo = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
             var cartlist = scm.GetUserList(UserIdInfo);
             return View(cartlist);
         }
@@ -45,8 +44,9 @@ namespace AydinogluLavender.Controllers
                 return RedirectToAction("Login", "Account");
             }
             //var UserInfo = um.GetBySession(Session["UserMail"].ToString());
-            var UserInfo = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
-            cart.UserID = UserInfo.UserID;
+            //var UserInfo = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
+            int UserValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
+            cart.UserID = UserValue;
             var CartInfo = scm.GetByID(cart.UserID, cart.ProductID);
             if (CartInfo == null)
             {
