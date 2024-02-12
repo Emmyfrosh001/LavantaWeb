@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,8 @@ namespace AydinogluLavender.Controllers
             if (Request.Cookies.AllKeys.Contains(name))
             {
                 //böyle bir cookie varsa bize geri değeri döndürsün
-                return View();
+                var UserValue = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
+                return View(UserValue);
             }
             //return null;
             //----------------
@@ -58,7 +61,7 @@ namespace AydinogluLavender.Controllers
 
             Context c = new Context();
             string passwordHash = MD5Hash(login.UserPassword.ToString());
-            var userlogininfo = c.Users.FirstOrDefault(x => x.UserMail == login.UserMail && x.UserPassword == passwordHash && x.UserStatus==true);
+            var userlogininfo = c.Users.FirstOrDefault(x => x.UserMail == login.UserMail && x.UserPassword == passwordHash && x.UserStatus == true);
             if (userlogininfo != null)
             {
                 string Encrypted = MD5Hash(DateTime.Now.ToString());
@@ -98,7 +101,7 @@ namespace AydinogluLavender.Controllers
             }
             return sb.ToString();
         }
-       
+
 
         [Authorize]//Yetkilendirme
         public ActionResult Order()
@@ -118,7 +121,7 @@ namespace AydinogluLavender.Controllers
             {
                 if (item.OrderID == id)
                 {
-                    ViewBag.OrderInfo= item;
+                    ViewBag.OrderInfo = item;
                     var OrderDetailValues = odm.GetOrderDetailList(id); //Userın tüm siparişlerinin çekilmesi
                     return View(OrderDetailValues);
                 }
@@ -128,6 +131,10 @@ namespace AydinogluLavender.Controllers
 
         public ActionResult Logout()
         {
+            var UserValue = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
+            UserValue.LoginInfo = null;
+            um.UpdateUserBl(UserValue);
+
             HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavender");
             AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(AydinogluLavenderCookie);
@@ -140,7 +147,46 @@ namespace AydinogluLavender.Controllers
             FormsAuthentication.SignOut();
             Session["UserMail"] = null;
             Session.Abandon();
+
             return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public ActionResult EditUser(User user)
+        {
+            string name = "AydinogluLavender";
+            if (Request.Cookies.AllKeys.Contains(name))
+            {
+                int UseridValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
+                if (UseridValue >= 0)
+                {
+                    var UserValue = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
+
+                    UserValue.UserName = user.UserName;
+                    UserValue.UserSurname = user.UserSurname;
+                    UserValue.UserPhoneNumber = user.UserPhoneNumber;
+                    UserValue.UserCity = user.UserCity;
+                    UserValue.UserDistrict = user.UserDistrict;
+                    UserValue.UserAddress = user.UserAddress;
+
+                    UserValidator userValidator = new UserValidator();
+                    ValidationResult results = userValidator.Validate(user);
+                    if (results.IsValid)
+                    {
+                        um.UpdateUserBl(UserValue);
+                        return RedirectToAction("/Index", "Account");
+                    }
+                    else
+                    {
+                        foreach (var item in results.Errors)
+                        {
+                            ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+
+                        }
+                        return View();
+                    }
+                }
+            }
+            return RedirectToAction("Login");
         }
 
     }

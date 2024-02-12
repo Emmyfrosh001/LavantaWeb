@@ -35,7 +35,6 @@
                             @using (Html.BeginForm("EditUser", "User", FormMethod.Post))
                             {
                                 <div class="form-group col-md-6" style="padding-left: 45px">
-                                    @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
 
                                     @Html.Label("Kullanıcı Adı:")
                                     @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
