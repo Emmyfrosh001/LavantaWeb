@@ -4,7 +4,9 @@
     ViewBag.Title = "Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@{
+    bool ordercount = false;
+}
 <!-- breadcrumb -->
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -34,12 +36,21 @@
                             <th class="column-2">Tarih</th>
                             <th class="column-3">Durumu</th>
                             <th class="column-4"><center>Toplam Ücret</center></th>
-                            <th ><center>Detay</center></th>
+                            <th><center>Detay</center></th>
                         </tr>
 
 
                         @foreach (var item in Model)
                         {
+
+                            if (item == null)
+                            {
+                                ordercount = false;
+                            }
+                            else
+                            {
+                                ordercount = true;
+                            }
                             <tr class="table_row">
                                 <td class="column-1">@item.OrderID</td>
                                 <td class="column-2">@item.OrderDateTime</td>
@@ -55,11 +66,25 @@
                             </tr>
                         }
 
+                        @if (ordercount)
+                        {
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5">
+
+                                    <p style="margin:45px">Hiç siparişiniz bulunmamaktadır!</p>
+                                </td>
+                            </tr>
+                        }
+
 
                     </table>
                 </div>
 
-                
+
             </div>
         </div>
 

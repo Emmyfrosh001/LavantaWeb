@@ -7,6 +7,9 @@
 @* ShoppingCart Index *@
 
 <!-- breadcrumb -->
+@{
+    bool productcount = false;
+}
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="/Home/Index" class="stext-109 cl8 hov-cl1 trans-04">
@@ -24,84 +27,99 @@
 <br />
 <br />
 @*<form class="bg0 p-t-75 p-b-85" >*@
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
-                <div class="m-l-25 m-r--38 m-lr-0-xl">
-                    <div class="wrap-table-shopping-cart">
-                        <table class="table-shopping-cart">
-                            <tr class="table_head">
-                                <th class="column-1">Ürün</th>
-                                <th class="column-2"></th>
-                                <th class="column-3">Fiyatı</th>
-                                <th class="column-4">Adeti</th>
-                                <th class="column-5">Toplam</th>
-                                <th class="column-6">Adet Güncelle</th>
-                                <th class="column-7">Ürünü Kaldır</th>
-                            </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
+            <div class="m-l-25 m-r--38 m-lr-0-xl">
+                <div class="wrap-table-shopping-cart">
+                    <table class="table-shopping-cart">
+                        <tr class="table_head">
+                            <th class="column-1">Ürün</th>
+                            <th class="column-2"></th>
+                            <th class="column-3">Fiyatı</th>
+                            <th class="column-4">Adeti</th>
+                            <th class="column-5">Toplam</th>
+                            <th class="column-6">Adet Güncelle</th>
+                            <th class="column-7">Ürünü Kaldır</th>
+                        </tr>
 
 
-                            @foreach (var item in Model)
+                        @foreach (var item in Model)
+                        {
+                            if (item == null)
                             {
-                                <form class="bg0 p-t-75 p-b-85" action="@Url.Action("UpdateCart", "ShoppingCart")" method="post">
+                                productcount = false;
+                            }
+                            else
+                            {
+                                productcount = true;
+                            }
+                            <form class="bg0 p-t-75 p-b-85" action="@Url.Action("UpdateCart", "ShoppingCart")" method="post">
                                 <input type="hidden" name="CartID" value="@item.CartID">
                                 <input type="hidden" name="ProductID" value="@item.ProductID">
-                                <tr class="table_row">
-                                    <td class="column-1">
-                                        @*<div class="how-itemcart1">
-                        <img src="~/images/@item.Product.ProductImage1" alt="IMG">
-                    </div>*@
-                                        <div>
-                                            <img src="~/images/@item.Product.ProductImage1" width="60" alt="IMG">
+                            <tr class="table_row">
+                                <td class="column-1">
+                                    @*<div class="how-itemcart1">
+                                            <img src="~/images/@item.Product.ProductImage1" alt="IMG">
+                                        </div>*@
+                                    <div>
+                                        <img src="~/images/@item.Product.ProductImage1" width="60" alt="IMG">
+                                    </div>
+                                </td>
+                                <td class="column-2"><a href="/Product/Details/@item.ProductID">@item.Product.ProductName</a></td>
+                                <td class="column-3">@item.Product.ProductPrice ₺</td>
+                                <td class="column-4">
+                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
-                                    </td>
-                                    <td class="column-2"><a href="/Product/Details/@item.ProductID">@item.Product.ProductName</a></td>
-                                    <td class="column-3">@item.Product.ProductPrice ₺</td>
-                                    <td class="column-4">
-                                        <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-minus"></i>
-                                            </div>
 
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="ProductPiece" min="1" value="@item.ProductPiece">
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="ProductPiece" min="1" value="@item.ProductPiece">
 
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-plus"></i>
-                                            </div>
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
-                                    </td>
+                                    </div>
+                                </td>
 
 
-                                    <td class="column-5">@(item.Product.ProductPrice * item.ProductPiece) ₺</td>
-                                    <td width="5%">
-                                        <button class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                            Güncelle
-                                        </button>
-                                    </td>
-                                    <td><center><h3><a href="/ShoppingCart/DeleteCart/@item.CartID"> <font color="red">X</font> </a></h3></center></td>
-                                </tr>
+                                <td class="column-5">@(item.Product.ProductPrice * item.ProductPiece) ₺</td>
+                                <td width="5%">
+                                    <button class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                                        Güncelle
+                                    </button>
+                                </td>
+                                <td><center><h3><a href="/ShoppingCart/DeleteCart/@item.CartID"> <font color="red">X</font> </a></h3></center></td>
+                            </tr>
                             </form>
-                            }
+                        }
 
 
-                        </table>
-                    </div>
-
-                    <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                        <div class="flex-w flex-m m-r-20 m-tb-5">
+                    </table>
+                </div>
+                <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                    <div class="flex-w flex-m m-r-20 m-tb-5">
+                        @if (productcount)
+                        {
                             <form action="@Url.Action("Payment", "ShoppingCart")" method="post">
                                 <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                     Alışverişi Tamamla
                                 </button>
                             </form>
-                        </div>
 
-
+                        }
+                        else
+                        {
+                            @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
+                        }
                     </div>
+
+
                 </div>
             </div>
-
-
         </div>
+
+
     </div>
+</div>
 @*</form>*@
