@@ -41,7 +41,7 @@
                         @Html.Label("Parolanız", new { @class = "p-t-20 " })
 
                         <div class="ui icon input form-control">
-                            @Html.Password("UserPassword", null, new { @class = "form-control", maxlength = "64", placeholder = "Password", required = "true" })
+                            @Html.Password("UserPassword", null, new { @class = "form-control", minlength = "7", maxlength = "64", placeholder = "Password", required = "true" })
                             <i class="circular eye link icon" style="margin: 7px 10px 0px 0px " onclick="togglePassword()"></i>
                         </div>
                         <p style="color:red"> @Html.ValidationMessageFor(x => x.UserPassword) </p>
@@ -522,7 +522,22 @@
             window.onload = function () {
                 Swal.fire({
                     icon: "error",
-                    title: "Bu e- posta adresi kayıtlıdır. Lütfen başka bir e-posta adresi deneyiniz.!",
+                    title: "Bu e- posta adresi kayıtlıdır. Lütfen başka bir e-posta adresi deneyiniz!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    @if (Session["MailInfo"] == "Gecersiz")
+    {
+        Session["MailInfo"] = null;
+
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Bu e- posta adresi geçersizdir!",
                     showConfirmButton: false,
                     timer: 2500
                 });
