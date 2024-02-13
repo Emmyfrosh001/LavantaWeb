@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace AydinogluLavender.Controllers
 {
@@ -18,10 +19,13 @@ namespace AydinogluLavender.Controllers
         UserManager um = new UserManager(new EfUserDal());
         OrderManager om = new OrderManager(new EfOrderDal());
         OrderDetailManager odm = new OrderDetailManager(new EfOrderDetailDal());
+        SettingManager sm=new SettingManager(new EfSettingDal());
 
         // GET: ShoppingCart
         public ActionResult Index()
         {
+
+            ViewBag.CargoPrice = sm.GetSetting().CargoPrice.ToString();
             if (Request.Cookies["AydinogluLavender"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -89,23 +93,23 @@ namespace AydinogluLavender.Controllers
             {
                 OrderTotalPrice = OrderTotalPrice + (cart.Product.ProductPrice * cart.ProductPiece);
             }
-
+            int cargoprice = sm.GetSetting().CargoPrice;
             Order order = new Order(); // Boş Sipariş oluşturularak içeriğinin doldurulması
             order.UserID = UserValue.UserID;
             order.OrderDateTime = datetime;
             order.OrderState = "Siparişiniz Onay Beklemektedir.";
             order.OrderPayType = "EFT/Havale";
-            order.OrderPrice = OrderTotalPrice;
+            order.OrderPrice = OrderTotalPrice+ cargoprice;
             order.OrderAddress = UserValue.UserCity + "/" + UserValue.UserDistrict + "/" + UserValue.UserAddress;
-            order.OrderCargoPrice = "0";
+            order.OrderCargoPrice = cargoprice.ToString();
             om.AddOrderBl(order); // Siparişin veritabanına eklenmesi
 
-            var OrderValues = om.GetOrderUserList(UserValue.UserID); //Userın tüm siparişlerinin çekilmesi
-            int orderid = 1;
-            foreach (var item in OrderValues)//Son siparişe kadar Orderidnin sürekli değişmesi
-            {
-                orderid = item.OrderID;
-            }
+            var OrderValues = om.GetOrderUserList(UserValue.UserID).FirstOrDefault(); //Userın tüm siparişlerinin çekilmesi
+            int orderid = OrderValues.OrderID;
+            //foreach (var item in OrderValues)//Son siparişe kadar Orderidnin sürekli değişmesi
+            //{
+            //    orderid = item.OrderID;
+            //}
             OrderDetail orderDetailValue = new OrderDetail(); // Boş OrderDetail oluşturma
             orderDetailValue.OrderID = orderid; // Veritabanına eklenen siparişin idsinin çekilmesi
 
@@ -118,10 +122,24 @@ namespace AydinogluLavender.Controllers
                 odm.AddorderDetailBl(orderDetailValue);
                 scm.DeleteShoppingCartBl(cart); // OrderDetail e aktarılan sepetin silinmesi
             }
-            return RedirectToAction("Order", "Account");
+            //return RedirectToAction("Order", "Account");
+            return RedirectToAction("OrderDetail", new RouteValueDictionary(new { controller = "Account", action = "OrderDetail", Id = orderid }));
         }
         public ActionResult Payment()
         {
+            int total = sm.GetSetting().CargoPrice;
+            if (Request.Cookies["AydinogluLavender"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            //var UserInfo = um.GetBySession(Session["UserMail"].ToString());
+            int UserIdInfo = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
+            var cartlist = scm.GetUserList(UserIdInfo);
+            foreach (var cart in cartlist)
+            {
+                total = total + (int)(cart.ProductPiece * cart.Product.ProductPrice);
+            }
+            ViewBag.Total = total;
             return View();
         }
     }

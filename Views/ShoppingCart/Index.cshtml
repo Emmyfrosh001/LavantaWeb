@@ -9,6 +9,9 @@
 <!-- breadcrumb -->
 @{
     bool productcount = false;
+    int ShoppingCartTotal = 0;
+    int ProductPrice = 0;
+    int ProductPiece = 0;
 }
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -29,7 +32,7 @@
 @*<form class="bg0 p-t-75 p-b-85" >*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
+        <div class="col-lg-9 col-xl-9 m-lr-auto m-b-50">
             <div class="m-l-25 m-r--38 m-lr-0-xl">
                 <div class="wrap-table-shopping-cart">
                     <table class="table-shopping-cart">
@@ -60,8 +63,8 @@
                             <tr class="table_row">
                                 <td class="column-1">
                                     @*<div class="how-itemcart1">
-                                            <img src="~/images/@item.Product.ProductImage1" alt="IMG">
-                                        </div>*@
+                        <img src="~/images/@item.Product.ProductImage1" alt="IMG">
+                    </div>*@
                                     <div>
                                         <img src="~/images/@item.Product.ProductImage1" width="60" alt="IMG">
                                     </div>
@@ -92,12 +95,14 @@
                                 <td><center><h3><a href="/ShoppingCart/DeleteCart/@item.CartID"> <font color="red">X</font> </a></h3></center></td>
                             </tr>
                             </form>
+
+                    <p hidden>@(ShoppingCartTotal =(int)ShoppingCartTotal+(int)(item.Product.ProductPrice *item.ProductPiece))</p>
                         }
 
 
                     </table>
                 </div>
-                <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                @*<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                     <div class="flex-w flex-m m-r-20 m-tb-5">
                         @if (productcount)
                         {
@@ -115,10 +120,54 @@
                     </div>
 
 
-                </div>
+                </div>*@
             </div>
         </div>
 
+        <div class="col-lg-3 col-xl-3 m-lr-auto m-b-50">
+            <div class="m-l-15 m-r--18 m-lr-0-xl">
+                <div style="border: 1px solid #e6e6e6;">
+                    <table style="margin:20px">
+
+                        <tr >
+                            <th>
+                                Sepet Tutarı : @ShoppingCartTotal ₺
+                            </th>
+                        </tr>
+                        <tr >
+                            <th>
+                                Kargo Ücreti: @ViewBag.CargoPrice ₺
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="flex-w flex-sb-m p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                                    <div class="flex-w flex-m m-r-20 m-tb-5">
+                                        @if (productcount)
+                                        {
+                                            <form action="@Url.Action("Payment", "ShoppingCart")" method="post">
+                                                <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                                    Alışverişi Tamamla
+                                                </button>
+                                            </form>
+
+                                        }
+                                        else
+                                        {
+                                            @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
+                                        }
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 </div>
