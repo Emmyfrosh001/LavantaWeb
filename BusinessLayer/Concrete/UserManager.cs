@@ -53,5 +53,10 @@ namespace BusinessLayer.Concrete
         {
             _userDal.Update(user);
         }
+
+        public User GetUserMail(string mailaddress)
+        {
+            return _userDal.Get(x => x.UserMail == mailaddress);
+        }
     }
 }

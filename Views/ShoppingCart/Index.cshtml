@@ -63,8 +63,8 @@
                             <tr class="table_row">
                                 <td class="column-1">
                                     @*<div class="how-itemcart1">
-                        <img src="~/images/@item.Product.ProductImage1" alt="IMG">
-                    </div>*@
+                                            <img src="~/images/@item.Product.ProductImage1" alt="IMG">
+                                        </div>*@
                                     <div>
                                         <img src="~/images/@item.Product.ProductImage1" width="60" alt="IMG">
                                     </div>
@@ -96,74 +96,76 @@
                             </tr>
                             </form>
 
-                    <p hidden>@(ShoppingCartTotal =(int)ShoppingCartTotal+(int)(item.Product.ProductPrice *item.ProductPiece))</p>
+                            <p hidden>@(ShoppingCartTotal =(int)ShoppingCartTotal+(int)(item.Product.ProductPrice *item.ProductPiece))</p>
                         }
 
 
                     </table>
                 </div>
                 @*<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                    <div class="flex-w flex-m m-r-20 m-tb-5">
-                        @if (productcount)
-                        {
-                            <form action="@Url.Action("Payment", "ShoppingCart")" method="post">
-                                <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                    Alışverişi Tamamla
-                                </button>
-                            </form>
+                        <div class="flex-w flex-m m-r-20 m-tb-5">
+                            @if (productcount)
+                            {
+                                <form action="@Url.Action("Payment", "ShoppingCart")" method="post">
+                                    <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                        Alışverişi Tamamla
+                                    </button>
+                                </form>
 
-                        }
-                        else
-                        {
-                            @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
-                        }
-                    </div>
+                            }
+                            else
+                            {
+                                @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
+                            }
+                        </div>
 
 
-                </div>*@
+                    </div>*@
             </div>
         </div>
 
         <div class="col-lg-3 col-xl-3 m-lr-auto m-b-50">
             <div class="m-l-15 m-r--18 m-lr-0-xl">
                 <div style="border: 1px solid #e6e6e6;">
-                    <table style="margin:20px">
 
-                        <tr >
-                            <th>
-                                Sepet Tutarı : @ShoppingCartTotal ₺
-                            </th>
-                        </tr>
-                        <tr >
-                            <th>
-                                Kargo Ücreti: @ViewBag.CargoPrice ₺
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-w flex-sb-m p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                                    <div class="flex-w flex-m m-r-20 m-tb-5">
-                                        @if (productcount)
-                                        {
+                    @if (productcount)
+                    {
+                        <table style="margin:20px">
+
+                            <tr>
+                                <th>
+                                    Sepet Tutarı : @ShoppingCartTotal ₺
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Kargo Ücreti: @ViewBag.CargoPrice ₺
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex-w flex-sb-m p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                                        <div class="flex-w flex-m m-r-20 m-tb-5">
                                             <form action="@Url.Action("Payment", "ShoppingCart")" method="post">
-                                                <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                                <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-7 trans-04 pointer m-tb-5">
                                                     Alışverişi Tamamla
                                                 </button>
                                             </form>
 
-                                        }
-                                        else
-                                        {
-                                            @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
-                                        }
+
+                                        </div>
+
+
                                     </div>
 
-
-                                </div>
-
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                    else
+                    {
+                        @:<p style="margin:25px">Sepetinizde hiç ürün bulunmamaktadır!</p>
+                    }
                 </div>
 
             </div>

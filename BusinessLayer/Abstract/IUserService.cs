@@ -11,6 +11,7 @@ namespace BusinessLayer.Abstract
     {
         List<User> GetAllList();
         User GetByID(int id);
+        User GetUserMail(string mailaddress);
         User GetByCookies(string cookies);
         int FindUserIdByCookies(string cookies, string data);
         void AddUserBl(User user);

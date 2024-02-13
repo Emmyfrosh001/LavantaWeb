@@ -29,42 +29,46 @@ namespace AydinogluLavender.Controllers
         [HttpPost]
         public ActionResult Index(User kullanici)
         {
-            kullanici.UserStatus = true;
-            kullanici.UserPassword = MD5Hash(kullanici.UserPassword);
-            ValidationResult results = userValidator.Validate(kullanici);
-            if (results.IsValid)
+            if (um.GetUserMail(kullanici.UserMail) == null)
             {
-                um.AddUserBl(kullanici);
-                Context c = new Context();
-                string Encrypted = MD5Hash(DateTime.Now.ToString());
-
-                HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavender");
-                AydinogluLavenderCookie["UserMail"] = kullanici.UserMail;
-                AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(10);
-                Response.Cookies.Add(AydinogluLavenderCookie);
-
-                HttpCookie LoginCookie = new HttpCookie("LoginData");
-                LoginCookie.Values.Add("Data", Encrypted);
-                LoginCookie.Expires = DateTime.Now.AddDays(10);
-                Response.Cookies.Add(LoginCookie);
-
-                FormsAuthentication.SetAuthCookie(kullanici.UserMail, true);
-                Session["UserMail"] = kullanici.UserMail;
-
-                kullanici.LoginInfo = Encrypted;
-                um.UpdateUserBl(kullanici);
-
-                return RedirectToAction("Index", "Home");
-
-            }
-            else
-            {
-                foreach (var item in results.Errors)
+                kullanici.UserStatus = true;
+                kullanici.UserPassword = MD5Hash(kullanici.UserPassword);
+                ValidationResult results = userValidator.Validate(kullanici);
+                if (results.IsValid)
                 {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    um.AddUserBl(kullanici);
+                    Context c = new Context();
+                    string Encrypted = MD5Hash(DateTime.Now.ToString());
+
+                    HttpCookie AydinogluLavenderCookie = new HttpCookie("AydinogluLavender");
+                    AydinogluLavenderCookie["UserMail"] = kullanici.UserMail;
+                    AydinogluLavenderCookie.Expires = DateTime.Now.AddDays(10);
+                    Response.Cookies.Add(AydinogluLavenderCookie);
+
+                    HttpCookie LoginCookie = new HttpCookie("LoginData");
+                    LoginCookie.Values.Add("Data", Encrypted);
+                    LoginCookie.Expires = DateTime.Now.AddDays(10);
+                    Response.Cookies.Add(LoginCookie);
+
+                    FormsAuthentication.SetAuthCookie(kullanici.UserMail, true);
+                    Session["UserMail"] = kullanici.UserMail;
+
+                    kullanici.LoginInfo = Encrypted;
+                    um.UpdateUserBl(kullanici);
+
+                    return RedirectToAction("Index", "Home");
 
                 }
+                else
+                {
+                    foreach (var item in results.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+
+                    }
+                }
             }
+            Session["MailInfo"] = "Kayitli";
             return View();
         }
         public static string MD5Hash(string text)
