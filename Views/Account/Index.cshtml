@@ -65,55 +65,143 @@
                 }
             </div>
 
-            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-map-marker"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Address
+            <div class="size-210 bor10 flex-w flex-col-t p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <form class="ui large form" style="margin-top:100px" method="post" action="/Account/PasswordChange">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="password" name="password" placeholder="Mevcut parolanızı giriniz" required/>
+                                <i class="circular eye link icon" onclick="togglePassword()"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="passwordnew" name="passwordnew" minlength="7" maxlength="64" placeholder="Yeni parolanızı giriniz" required="true"/>
+                                <i class="circular eye link icon" onclick="togglePasswordnew()"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="passwordnewagain" name="passwordnewagain" placeholder="Yeni parola tekrarını giriniz" required="true"/>
+                                <i class="circular eye link icon" onclick="togglePasswordnewagain()"></i>
+                            </div>
+                        </div><button>
+                            <div class="ui fluid large teal submit button">
+                                Parolayı Değiştir
+                            </div>
+                        </button>
+                    </div>
+                </form>
+                <script>
+                    function togglePassword() {
+                        var element = document.getElementById('password');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                    function togglePasswordnew() {
+                        var element = document.getElementById('passwordnew');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                    function togglePasswordnewagain() {
+                        var element = document.getElementById('passwordnewagain');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                </script>
+                @*<div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-map-marker"></span>
                         </span>
 
-                        <p class="stext-115 cl6 size-213 p-t-18">
-                            Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-                        </p>
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Address
+                            </span>
+
+                            <p class="stext-115 cl6 size-213 p-t-18">
+                                Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-phone-handset"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Lets Talk
+                    <div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-phone-handset"></span>
                         </span>
 
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            +1 800 1236879
-                        </p>
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Lets Talk
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                +1 800 1236879
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="flex-w w-full">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-envelope"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Sale Support
+                    <div class="flex-w w-full">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-envelope"></span>
                         </span>
 
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            contact@example.com
-                        </p>
-                    </div>
-                </div>
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Sale Support
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                contact@example.com
+                            </p>
+                        </div>
+                    </div>*@
             </div>
         </div>
     </div>
-</section>	
+</section>
+
+@section OzelScript
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (Session["PasswordAlert"] == "PasswordNewDifferent")//Girilen yeni parolalar farklı
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Yeni parolalar eşleşmemektedir!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    else if (Session["PasswordAlert"] == "PasswordOldError")// Eski Parola Yanlış
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Mevcut parolanızıhatalı girdiniz!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    else if (Session["PasswordAlert"] == "success")// Parola değiştirme işlemibaşarılı
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "success",
+                    title: "Parolanız başarıyla değiştirilmiştir!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+}

@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using AydinogluLavender.Models;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
@@ -86,6 +87,7 @@ namespace AydinogluLavender.Controllers
             }
             else
             {
+                Session["Login"] = "Error";
                 return RedirectToAction("Login");
             }
         }
@@ -187,6 +189,39 @@ namespace AydinogluLavender.Controllers
                 }
             }
             return RedirectToAction("Login");
+        }
+        [HttpPost]
+        public ActionResult PasswordChange (Password data)
+        {
+            
+            if (data.passwordnew == data.passwordnewagain)
+            {
+                int UseridValue = um.FindUserIdByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString(), Request.Cookies["LoginData"]?["Data"].ToString());//User id yi Cookieden bulma
+                if (UseridValue >= 0)
+                {
+                    data.password=MD5Hash(data.password);//kullanıcıdan alınan parola Encrypted oldu.
+                    var UserValue = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
+                    if (data.password == UserValue.UserPassword)// Veri tabanındaki Encrypted şifre ile girilen parola karşılaştırıldı
+                    {
+                        UserValue.UserPassword = MD5Hash(data.passwordnew);// Yeni parola Encrypt edilerek kullanıcı verisideğiştirildi.
+                        um.UpdateUserBl(UserValue); //Değiştirilen şifre veritabanında güncellendi
+                        Session["PasswordAlert"] = "success";
+                    }
+                    else
+                    {
+                        Session["PasswordAlert"] = "PasswordOldError";
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            else
+            {
+                Session["PasswordAlert"] = "PasswordNewDifferent";
+            }
+            return RedirectToAction("/Index");
         }
 
     }
