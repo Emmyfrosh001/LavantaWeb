@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using AydinogluLavender.Models;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
@@ -23,10 +24,16 @@ namespace AydinogluLavender.Controllers
         UserManager um = new UserManager(new EfUserDal());
         UserValidator userValidator = new UserValidator();
         // GET: Register
+        Context c = new Context();
+        //DbAydinogluLavenderEntities aldb = new DbAydinogluLavenderEntities();
+        CityDistrict cd = new CityDistrict();
         public ActionResult Index()
         {
+            ViewBag.Cities = new SelectList(c.Cities, "CityID", "CityName").ToList();
+            ViewBag.Districts = new SelectList(c.Districts, "DistrictID", "DistrictName").ToList();
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(User kullanici)
         {
@@ -108,6 +115,19 @@ namespace AydinogluLavender.Controllers
             bool isStrictMatch = reStrict.IsMatch(emailAddress);
             return isStrictMatch;
 
+        }
+        public JsonResult GetDistrict(int p)
+        {
+            var districts = (from x in c.Districts
+                             join y in c.Cities on x.CityID equals y.CityID
+                             where x.CityID == p
+                             select new
+                             {
+                                 Text = x.DistrictName,
+                                 value = x.DistrictID.ToString()
+                             }).ToList();
+
+            return Json(districts, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,66 @@
+﻿
+@*@model AydinogluLavender.Models.CityDistrict*@
+@model EntityLayer.Concrete.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test2</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div>
+        @*@Html.Label("iller")
+        @Html.DropDownList("DropCity", Model.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+
+        @Html.Label("ilçeler")
+        @Html.DropDownList("DropDistrict", Model.Districts, "- - İlçe Seçiniz - -", new { @class = "form-control" })*@
+
+
+        @Html.Label("Şehir")
+        @Html.DropDownListFor(x => x.UserCity, (List<SelectListItem>)ViewBag.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+        <p style="color:red">@Html.ValidationMessageFor(x => x.UserCity)</p>
+        @Html.Label("İlçe")
+        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+        <p style="color:red">@Html.ValidationMessageFor(x => x.UserDistrict)</p>
+
+    </div>
+
+    <script>
+        $(function () {
+            $('#UserCity').change(function () {
+                var CityID = $('#UserCity').val();
+                $.ajax({
+                    url: '/Home/GetDistrict',
+                    data: { p: CityID },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#UserDistrict').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

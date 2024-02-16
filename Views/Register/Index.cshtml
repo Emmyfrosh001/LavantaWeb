@@ -1,9 +1,12 @@
 ﻿@model EntityLayer.Concrete.User
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<head>
+
+</head>
 
 <section class="bg0 p-t-104 p-b-116">
     <div class="container">
@@ -52,13 +55,22 @@
                         <center>
                             @Html.Label("- - - ADRES BİLGİLERİNİZ - - -", new { @class = "p-t-20 " })
                         </center>
-                        @Html.Label("Şehir", new { @class = "p-t-20 " })
-                        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control", required = "true" })
-                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
 
-                        @Html.Label("İlçe", new { @class = "p-t-20 " })
-                        @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control", required = "true" })
-                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>
+                        @*@Html.Label("Şehir", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control", required = "true" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
+
+                            @Html.Label("İlçe", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control", required = "true" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>*@
+
+                        @Html.Label("Şehir")
+                        @Html.DropDownListFor(x => x.UserCity, (List<SelectListItem>)ViewBag.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserCity)</p>
+                        @Html.Label("İlçe")
+                        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserDistrict)</p>
+
 
                         @Html.Label("Adres", new { @class = "p-t-20 " })
                         @Html.TextAreaFor(x => x.UserAddress, new { @class = "form-control", required = "true" })
@@ -97,55 +109,6 @@
                 }
             </div>
 
-            @*<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-map-marker"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Address
-                        </span>
-
-                        <p class="stext-115 cl6 size-213 p-t-18">
-                            Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-phone-handset"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Lets Talk
-                        </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            +1 800 1236879
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-envelope"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Sale Support
-                        </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            contact@example.com
-                        </p>
-                    </div>
-                </div>
-            </div>*@
         </div>
     </div>
 </section>
@@ -544,4 +507,24 @@
             }
         </script>
     }
+    <script>
+        $(function () {
+            $('#UserCity').change(function () {
+                var CityID = $('#UserCity').val();
+                $.ajax({
+                    url: '/Register/GetDistrict',
+                    data: { p: CityID },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#UserDistrict').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 }

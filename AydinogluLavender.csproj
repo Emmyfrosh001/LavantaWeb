@@ -150,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CityDistrict.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
@@ -2123,6 +2124,8 @@
     <Content Include="images\thumb-01.jpg" />
     <Content Include="images\thumb-02.jpg" />
     <Content Include="images\thumb-03.jpg" />
+    <Content Include="js\jquery-3.3.1.js" />
+    <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
@@ -3105,6 +3108,8 @@
     <Content Include="Views\Setting\EditSetting.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy %282%29.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\Test2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

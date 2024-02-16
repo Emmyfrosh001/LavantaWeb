@@ -1,4 +1,6 @@
-﻿using BusinessLayer.Concrete;
+﻿using AydinogluLavender.Models;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -36,6 +38,47 @@ namespace AydinogluLavender.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        Context c = new Context();
+        //DbAydinogluLavenderEntities aldb = new DbAydinogluLavenderEntities();
+        CityDistrict cd = new CityDistrict();
+        public ActionResult Test()
+        {
+
+            //cd.Cities = new SelectList(aldb.Cities, "CityID", "CityName");
+            //cd.Cities = new SelectList(aldb.Districts, "DistrictID", "DistrictName", "CityID");
+
+            cd.Cities = new SelectList(c.Cities, "CityID", "CityName");
+            cd.Districts = new SelectList(c.Districts, "DistrictID", "DistrictName");
+            return View(cd);
+        }
+
+        public ActionResult Test2()
+        {
+
+            //cd.Cities = new SelectList(aldb.Cities, "CityID", "CityName");
+            //cd.Cities = new SelectList(aldb.Districts, "DistrictID", "DistrictName", "CityID");
+
+            //cd.Cities = new SelectList(c.Cities, "CityID", "CityName");
+            //cd.Districts = new SelectList(c.Districts, "DistrictID", "DistrictName");
+            //return View(cd);
+            ViewBag.Cities = new SelectList(c.Cities, "CityID", "CityName").ToList();
+            ViewBag.Districts = new SelectList(c.Districts, "DistrictID", "DistrictName").ToList();
+            return View();
+        }
+
+        public JsonResult GetDistrict(int p)
+        {
+            var districts = (from x in c.Districts 
+                             join y in c.Cities on x.CityID equals y.CityID 
+                             where x.CityID == p 
+                             select new 
+                             { 
+                                 Text = x.DistrictName, 
+                                 value = x.DistrictID.ToString() 
+                             }).ToList();
+
+            return Json(districts,JsonRequestBehavior.AllowGet);
         }
     }
 }

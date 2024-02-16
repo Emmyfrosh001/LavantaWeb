@@ -128,6 +128,10 @@
     <Compile Include="Migrations\202402112110494_UserLogininfoAdd.designer.cs">
       <DependentUpon>202402112110494_UserLogininfoAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402160247161_CityDistrictTabloAdd.cs" />
+    <Compile Include="Migrations\202402160247161_CityDistrictTabloAdd.designer.cs">
+      <DependentUpon>202402160247161_CityDistrictTabloAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402112110494_UserLogininfoAdd.resx">
       <DependentUpon>202402112110494_UserLogininfoAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402160247161_CityDistrictTabloAdd.resx">
+      <DependentUpon>202402160247161_CityDistrictTabloAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
