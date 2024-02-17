@@ -44,13 +44,20 @@
                         <center>
                             @Html.Label("- - - ADRES BİLGİLERİNİZ - - -", new { @class = "p-t-20 " })
                         </center>
-                        @Html.Label("Şehir", new { @class = "p-t-20 " })
-                        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
-                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
+                        @*@Html.Label("Şehir", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
 
-                        @Html.Label("İlçe", new { @class = "p-t-20 " })
-                        @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control" })
-                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>
+                            @Html.Label("İlçe", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>*@
+
+                        @Html.Label("Şehir")
+                        @Html.DropDownListFor(x => x.UserCity, (List<SelectListItem>)ViewBag.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserCity)</p>
+                        @Html.Label("İlçe")
+                        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - İlçe Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserDistrict)</p>
 
                         @Html.Label("Adres", new { @class = "p-t-20 " })
                         @Html.TextAreaFor(x => x.UserAddress, new { @class = "form-control" })
@@ -70,19 +77,19 @@
                     <div class="ui stacked segment">
                         <div class="field">
                             <div class="ui icon input">
-                                <input type="password" id="password" name="password" placeholder="Mevcut parolanızı giriniz" required/>
+                                <input type="password" id="password" name="password" placeholder="Mevcut parolanızı giriniz" required />
                                 <i class="circular eye link icon" onclick="togglePassword()"></i>
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui icon input">
-                                <input type="password" id="passwordnew" name="passwordnew" minlength="7" maxlength="64" placeholder="Yeni parolanızı giriniz" required="true"/>
+                                <input type="password" id="passwordnew" name="passwordnew" minlength="7" maxlength="64" placeholder="Yeni parolanızı giriniz" required="true" />
                                 <i class="circular eye link icon" onclick="togglePasswordnew()"></i>
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui icon input">
-                                <input type="password" id="passwordnewagain" name="passwordnewagain" placeholder="Yeni parola tekrarını giriniz" required="true"/>
+                                <input type="password" id="passwordnewagain" name="passwordnewagain" placeholder="Yeni parola tekrarını giriniz" required="true" />
                                 <i class="circular eye link icon" onclick="togglePasswordnewagain()"></i>
                             </div>
                         </div><button>
@@ -204,4 +211,51 @@
             }
         </script>
     }
+    <script>
+        $(function () {
+            $('#UserCity').change(function () {
+                var CityID = $('#UserCity').val();
+                $.ajax({
+                    url: '/Register/GetDistrict',
+                    data: { p: CityID },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#UserDistrict').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+
+        window.onload = function () {
+
+            var CityID = $('#UserCity').val();
+            var DistrictID = $('#UserDistrict').val();//ilçe defaultta geliyor ancak filtreleme yaparken gittiği için burada veriyi alıyoruz.
+            $.ajax({
+                url: '/Register/GetDistrict',
+                data: { p: CityID },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#UserDistrict').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].Value == DistrictID) {//ilçe idsine eşit olursa selected yani seçili olacak
+                            $('#UserDistrict').append("<option selected value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                        else {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                }
+            });
+        };
+
+    </script>
 }

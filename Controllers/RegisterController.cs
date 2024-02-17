@@ -23,10 +23,12 @@ namespace AydinogluLavender.Controllers
 
         UserManager um = new UserManager(new EfUserDal());
         UserValidator userValidator = new UserValidator();
-        // GET: Register
+
         Context c = new Context();
         //DbAydinogluLavenderEntities aldb = new DbAydinogluLavenderEntities();
-        CityDistrict cd = new CityDistrict();
+        //CityDistrict cd = new CityDistrict();
+
+        // GET: Register
         public ActionResult Index()
         {
             ViewBag.Cities = new SelectList(c.Cities, "CityID", "CityName").ToList();
@@ -119,15 +121,16 @@ namespace AydinogluLavender.Controllers
         public JsonResult GetDistrict(int p)
         {
             var districts = (from x in c.Districts
-                             join y in c.Cities on x.CityID equals y.CityID
-                             where x.CityID == p
+                             join y in c.Cities on x.city.CityID equals y.CityID
+                             where x.city.CityID == p
                              select new
                              {
                                  Text = x.DistrictName,
-                                 value = x.DistrictID.ToString()
+                                 Value = x.DistrictID.ToString()
                              }).ToList();
 
             return Json(districts, JsonRequestBehavior.AllowGet);
-        }
+        }        
+
     }
 }

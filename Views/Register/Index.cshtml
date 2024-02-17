@@ -57,19 +57,21 @@
                         </center>
 
                         @*@Html.Label("Şehir", new { @class = "p-t-20 " })
-                            @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control", required = "true" })
-                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
+        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control", required = "true" })
+        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
 
-                            @Html.Label("İlçe", new { @class = "p-t-20 " })
-                            @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control", required = "true" })
-                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>*@
+        @Html.Label("İlçe", new { @class = "p-t-20 " })
+        @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control", required = "true" })
+        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>*@
 
                         @Html.Label("Şehir")
                         @Html.DropDownListFor(x => x.UserCity, (List<SelectListItem>)ViewBag.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
                         <p style="color:red">@Html.ValidationMessageFor(x => x.UserCity)</p>
                         @Html.Label("İlçe")
-                        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - İlçe Seçiniz - -", new { @class = "form-control" })
                         <p style="color:red">@Html.ValidationMessageFor(x => x.UserDistrict)</p>
+
+
 
 
                         @Html.Label("Adres", new { @class = "p-t-20 " })
@@ -527,4 +529,5 @@
             });
         });
     </script>
+    
 }

@@ -24,17 +24,15 @@ namespace AydinogluLavender.Controllers
         UserManager um = new UserManager(new EfUserDal());
         OrderManager om = new OrderManager(new EfOrderDal());
         OrderDetailManager odm = new OrderDetailManager(new EfOrderDetailDal());
+        Context c = new Context();
         // GET: Account
         [Authorize]//Yetkilendirme
         public ActionResult Index()
         {
-            //if (Session["UserMail"]==null)
-            //{
-            //    return RedirectToAction("Login");
-            //}
 
-            //--------
-            //Böyle bir cookie mevcut mu kontrol ediyoruz
+            ViewBag.Cities = new SelectList(c.Cities, "CityID", "CityName").ToList();
+            ViewBag.Districts = new SelectList(c.Districts, "DistrictID", "DistrictName").ToList();
+
             string name = "AydinogluLavender";
             if (Request.Cookies.AllKeys.Contains(name))
             {
@@ -42,13 +40,6 @@ namespace AydinogluLavender.Controllers
                 var UserValue = um.GetByCookies(Request.Cookies["AydinogluLavender"]?["UserMail"].ToString());
                 return View(UserValue);
             }
-            //return null;
-            //----------------
-
-            //if (Request.Cookies["AydinogluLavender"] == null)
-            //{
-            //    return RedirectToAction("Login");
-            //}
             return RedirectToAction("Login");
         }
         [HttpGet]
