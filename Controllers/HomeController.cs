@@ -16,6 +16,7 @@ namespace AydinogluLavender.Controllers
 
         ProductManager pm = new ProductManager(new EfProductDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        ContactManager ctm=new ContactManager(new EfContactDal());
         public ActionResult Index()
         {
             //List<SelectListItem> categorylist = (from x in cm.GetAktifAllList() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryID.ToString() }).ToList();
@@ -38,6 +39,13 @@ namespace AydinogluLavender.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        [HttpPost]
+        public ActionResult ContactMessage(Contact parametre) 
+        {
+            ctm.AddContactBl(parametre);
+            Session["statusAdd"] = "Basarili";
+            return RedirectToAction("Contact", "Home");
         }
         Context c = new Context();
         //DbAydinogluLavenderEntities aldb = new DbAydinogluLavenderEntities();
