@@ -22,3 +22,8 @@ C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAc
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.ShoppingCartAdd.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.ShoppingCartEdit.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.addAdminTable.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.OrderCargoNumberAdd.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.AdminAdminRoleEdit.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.SettingTableAdd.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.UserLogininfoAdd.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.CityDistrictTabloAdd.resources

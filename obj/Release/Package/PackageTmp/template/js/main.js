@@ -216,7 +216,7 @@
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
+        if(numProduct > 1) $(this).next().val(numProduct - 1);
     });
 
     $('.btn-num-product-up').on('click', function(){
@@ -275,6 +275,26 @@
 
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
+    });
+    /*==================================================================
+    [ Show modal2 ]*/
+    $('.js-show-modal2').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal2').addClass('show-modal2');
+    });
+
+    $('.js-hide-modal2').on('click',function(){
+        $('.js-modal2').removeClass('show-modal2');
+    });
+    /*==================================================================
+    [ Show modal3 ]*/
+    $('.js-show-modal3').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal3').addClass('show-modal3');
+    });
+
+    $('.js-hide-modal3').on('click',function(){
+        $('.js-modal3').removeClass('show-modal3');
     });
 
 

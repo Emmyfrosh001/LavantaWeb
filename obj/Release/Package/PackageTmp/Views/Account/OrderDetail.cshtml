@@ -1,0 +1,124 @@
+﻿@using EntityLayer.Concrete
+@model List<OrderDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* ShoppingCart Index *@
+
+<!-- breadcrumb -->
+<div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a href="/Home/Index" class="stext-109 cl8 hov-cl1 trans-04">
+            Hesabım
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+        <a href="/Account/Order" class="stext-109 cl8 hov-cl1 trans-04">
+            Siparişlerim
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <span class="stext-109 cl4">
+
+            Sipariş Detayı
+
+        </span>
+    </div>
+</div>
+<br />
+<br />
+@*<form class="bg0 p-t-75 p-b-85" >*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
+            <div class="m-l-25 m-r--38 m-lr-0-xl">
+                <div class="wrap-table-shopping-cart">
+                    <table class="table-shopping-cart">
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Sipariş ID</th>
+                            <td>@ViewBag.OrderInfo.OrderID</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Sipariş Tarihi</th>
+                            <td>@ViewBag.OrderInfo.OrderDateTime</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Sipariş Durumu</th>
+                            <td>@ViewBag.OrderInfo.OrderState</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Kargo Takip Numarası</th>
+                            <td>@ViewBag.OrderInfo.OrderCargoNumber</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Ödeme Türü</th>
+                            <td>@ViewBag.OrderInfo.OrderPayType</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Ödeme Tutarı</th>
+                            <td>@ViewBag.OrderInfo.OrderPrice ₺</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Adres</th>
+                            <td>@ViewBag.OrderInfo.OrderAddress</td>
+                        </tr>
+                        <tr class="table_head">
+                            <th width="30%" style="padding: 15px 20px;">Kargo Ücreti</th>
+                            <td>@ViewBag.OrderInfo.OrderCargoPrice</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
+            <div class="m-l-25 m-r--38 m-lr-0-xl">
+                <div class="wrap-table-shopping-cart">
+                    <table class="table-shopping-cart">
+                        <tr class="table_head">
+                            <th class="column-1">Ürün</th>
+                            <th class="column-2"></th>
+                            <th class="column-3">Fiyatı</th>
+                            <th class="column-4">Adeti</th>
+                            <th class="column-5">Toplam</th>
+                        </tr>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr class="Detailtable_row">
+                                <td class="column-1">
+                                    <div>
+                                        <img src="~/images/@item.Product.ProductImage1" width="60" alt="IMG">
+                                    </div>
+                                </td>
+                                <td class="column-2"><a href="/Product/Details/@item.ProductID">@item.Product.ProductName</a></td>
+                                <td class="column-3">@item.ProductUnitPrice ₺</td>
+                                <td class="column-4">@item.ProductPiece</td>
+                                <td class="column-5">@(item.ProductUnitPrice * item.ProductPiece) ₺</td>
+
+                            </tr>
+                        }
+
+
+                    </table>
+                </div>
+
+                <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                    <div class="flex-w flex-m m-r-20 m-tb-5">
+                        <form action="@Url.Action("Order", "Account")" method="post">
+                            <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                Tüm Siparişlerim
+                            </button>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+@*</form>*@

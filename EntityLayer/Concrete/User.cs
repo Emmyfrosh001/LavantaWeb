@@ -23,10 +23,10 @@ namespace EntityLayer.Concrete
         public string UserPassword { get; set; }     //Kullanıcı Parolası
         [StringLength(10)]
         public string UserPhoneNumber { get; set; }     //Kullanıcı Telefon Numarası
-        [StringLength(15)]
-        public string UserCity { get; set; }     //Kullanıcının Yaşadığı Şehir
-        [StringLength(16)]
-        public string UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
+        
+        public int UserCity { get; set; }     //Kullanıcının Yaşadığı Şehir
+        public int UserDistrict { get; set; }     //Kullanıcının Yaşadığı ilçe
+
         [StringLength(33)]
         public string LoginInfo { get; set; }     //Login Bilgisi Şifreli
         [StringLength(250)]

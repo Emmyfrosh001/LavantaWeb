@@ -1,8 +1,261 @@
-﻿
+﻿@model EntityLayer.Concrete.User
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <h4 class="mtext-105 cl2 txt-center p-b-30">
+                    Profili Düzenle
+                </h4>
+
+                @using (Html.BeginForm("EditUser", "Account", FormMethod.Post))
+                {
+                    <div class="form-group col-md-12" style="padding-left: 25px; padding-bottom: 25px; background-color: gainsboro ">
+
+                        <hr />
+                        <center>
+                            @Html.Label("- - - KİŞİSEL BİLGİLERİNİZ - - -", new { @class = "p-t-30 " })
+                        </center>
+
+                        @Html.Label("Ad", new { @class = "p-t-20 " })
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control p-r-30 " })
+                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserName) </p>
+
+                        @Html.Label("Soyad", new { @class = "p-t-20 " })
+                        @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control" })
+                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserSurname) </p>
+
+
+                        @Html.Label("E-posta adresi", new { @class = "p-t-20 " })
+                        @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control", disabled = "true" })
+                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserMail) </p>
+
+
+                        @Html.Label("Cep telefon numarası", new { @class = "p-t-20 " })
+                        @Html.TextBoxFor(x => x.UserPhoneNumber, new { @class = "form-control" })
+                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserPhoneNumber) </p>
+                        <br />
+                        <hr />
+                        <center>
+                            @Html.Label("- - - ADRES BİLGİLERİNİZ - - -", new { @class = "p-t-20 " })
+                        </center>
+                        @*@Html.Label("Şehir", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserCity) </p>
+
+                            @Html.Label("İlçe", new { @class = "p-t-20 " })
+                            @Html.TextBoxFor(x => x.UserDistrict, new { @class = "form-control" })
+                            <p style="color:red"> @Html.ValidationMessageFor(x => x.UserDistrict) </p>*@
+
+                        @Html.Label("Şehir")
+                        @Html.DropDownListFor(x => x.UserCity, (List<SelectListItem>)ViewBag.Cities, "- - Şehir Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserCity)</p>
+                        @Html.Label("İlçe")
+                        @Html.DropDownListFor(x => x.UserDistrict, (List<SelectListItem>)ViewBag.Districts, "- - İlçe Seçiniz - -", new { @class = "form-control" })
+                        <p style="color:red">@Html.ValidationMessageFor(x => x.UserDistrict)</p>
+
+                        @Html.Label("Adres", new { @class = "p-t-20 " })
+                        @Html.TextAreaFor(x => x.UserAddress, new { @class = "form-control" })
+                        <p style="color:red"> @Html.ValidationMessageFor(x => x.UserAddress) </p>
+
+
+                        <br />
+                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                            Bilgilerimi Güncelle
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <div class="size-210 bor10 flex-w flex-col-t p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <form class="ui large form" style="margin-top:100px" method="post" action="/Account/PasswordChange">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="password" name="password" placeholder="Mevcut parolanızı giriniz" required />
+                                <i class="circular eye link icon" onclick="togglePassword()"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="passwordnew" name="passwordnew" minlength="7" maxlength="64" placeholder="Yeni parolanızı giriniz" required="true" />
+                                <i class="circular eye link icon" onclick="togglePasswordnew()"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" id="passwordnewagain" name="passwordnewagain" placeholder="Yeni parola tekrarını giriniz" required="true" />
+                                <i class="circular eye link icon" onclick="togglePasswordnewagain()"></i>
+                            </div>
+                        </div><button>
+                            <div class="ui fluid large teal submit button">
+                                Parolayı Değiştir
+                            </div>
+                        </button>
+                    </div>
+                </form>
+                <script>
+                    function togglePassword() {
+                        var element = document.getElementById('password');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                    function togglePasswordnew() {
+                        var element = document.getElementById('passwordnew');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                    function togglePasswordnewagain() {
+                        var element = document.getElementById('passwordnewagain');
+                        element.type = (element.type == 'password' ? 'text' : 'password');
+                    }
+                </script>
+                @*<div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-map-marker"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Address
+                            </span>
+
+                            <p class="stext-115 cl6 size-213 p-t-18">
+                                Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-phone-handset"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Lets Talk
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                +1 800 1236879
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex-w w-full">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-envelope"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Sale Support
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                contact@example.com
+                            </p>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+@section OzelScript
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (Session["PasswordAlert"] == "PasswordNewDifferent")//Girilen yeni parolalar farklı
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Yeni parolalar eşleşmemektedir!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    else if (Session["PasswordAlert"] == "PasswordOldError")// Eski Parola Yanlış
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "Mevcut parolanızıhatalı girdiniz!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    else if (Session["PasswordAlert"] == "success")// Parola değiştirme işlemibaşarılı
+    {
+        Session["PasswordAlert"] = null;
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "success",
+                    title: "Parolanız başarıyla değiştirilmiştir!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
+    <script>
+        $(function () {
+            $('#UserCity').change(function () {
+                var CityID = $('#UserCity').val();
+                $.ajax({
+                    url: '/Register/GetDistrict',
+                    data: { p: CityID },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#UserDistrict').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+
+        window.onload = function () {
+
+            var CityID = $('#UserCity').val();
+            var DistrictID = $('#UserDistrict').val();//ilçe defaultta geliyor ancak filtreleme yaparken gittiği için burada veriyi alıyoruz.
+            $.ajax({
+                url: '/Register/GetDistrict',
+                data: { p: CityID },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#UserDistrict').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].Value == DistrictID) {//ilçe idsine eşit olursa selected yani seçili olacak
+                            $('#UserDistrict').append("<option selected value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                        else {
+                            $('#UserDistrict').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                }
+            });
+        };
+
+    </script>
+}

@@ -20,6 +20,8 @@ namespace AydinogluLavender.Controllers
         OrderManager om = new OrderManager(new EfOrderDal());
         OrderDetailManager odm = new OrderDetailManager(new EfOrderDetailDal());
         SettingManager sm=new SettingManager(new EfSettingDal());
+        CityManager citym=new CityManager(new EfCityDal());
+        DistrictManager distm=new DistrictManager(new EfDiscrictDal());
 
         // GET: ShoppingCart
         public ActionResult Index()
@@ -100,7 +102,7 @@ namespace AydinogluLavender.Controllers
             order.OrderState = "Siparişiniz Onay Beklemektedir.";
             order.OrderPayType = "EFT/Havale";
             order.OrderPrice = OrderTotalPrice+ cargoprice;
-            order.OrderAddress = UserValue.UserCity + "/" + UserValue.UserDistrict + "/" + UserValue.UserAddress;
+            order.OrderAddress = citym.GetByID((int)UserValue.UserCity).CityName + "/" + distm.GetByID((int)UserValue.UserDistrict).DistrictName + "/" + UserValue.UserAddress;
             order.OrderCargoPrice = cargoprice.ToString();
             om.AddOrderBl(order); // Siparişin veritabanına eklenmesi
 

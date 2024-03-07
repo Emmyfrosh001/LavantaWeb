@@ -7,11 +7,10 @@
     <div class="container">
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                <form>
+                @*<form>*@
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
                         Bize mesaj gönder
                     </h4>
-
                     <div class="bor8 m-b-20 how-pos4-parent">
                         <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email adresiniz">
                         <img class="how-pos4 pointer-none" src="~/images/icons/icon-email.png" alt="ICON">
@@ -21,10 +20,11 @@
                         <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Nasıl yardımcı olabiliriz?"></textarea>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                    <button id="deneme" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
                         Gönder
                     </button>
-                </form>
+
+                @*</form>*@
             </div>
 
             <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
@@ -94,4 +94,13 @@
     <!--===============================================================================================-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
     <script src="~/js/map-custom.js"></script>
+
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        $('#deneme').click(function () {
+            swal("Mesaj Gönderilemedi!", "Mail foksiyonlarında hata alındı.", "error");
+        });
+    </script>
+
 }

@@ -46,7 +46,7 @@
 
                                 </div>
                                 <div class="w-50 text-md-right">
-                                    <a href="#" style="color: #fff">Parolanızı mı unuttunuz</a>
+                                    <a href="#" style="color: #fff"><p id="passwordforget">Parolanızı mı unuttunuz</p></a>
                                 </div>
                             </div>
                         }
@@ -69,20 +69,28 @@
 </body>
 </html>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/template/vendor/sweetalert/sweetalert.min.js"></script>
+<script>
+    $('#passwordforget').click(function () {
+        swal("Hata", "Şifremi unuttum alanı şuanda kullanılamamaktadır! Anlayışınızı için teşekkürler.", "error");
 
-    @if (Session["Login"] == "Error")//Girilen yeni parolalar farklı
-    {
-        Session["Login"] = null;
-        <script>
-            window.onload = function () {
-                Swal.fire({
-                    icon: "error",
-                    title: "E-Posta veya Parolanızı yanlış girdiniz!",
-                    showConfirmButton: false,
-                    timer: 2500
-                });
-            }
-        </script>
-    }
+    });
+</script>
+
+@if (Session["Login"] == "Error")//Girilen yeni parolalar farklı
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    Session["Login"] = null;
+    <script>
+        window.onload = function () {
+            Swal.fire({
+                icon: "error",
+                title: "E-Posta veya Parolanızı yanlış girdiniz!",
+                showConfirmButton: false,
+                timer: 2500
+            });
+        }
+    </script>
+}
+
 

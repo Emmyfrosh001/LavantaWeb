@@ -1203,6 +1203,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	
 	</script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        $(function () {
+            // sayfa açılışında dialog kutusunun gelmesi için her hangi bir buton için yerleştirmedik
+            $("#uyari").dialog({
+                width: 600, //dialog kutusunun genişliği
+                modal: true, //arkaplanın koyu olması
+                autoOpen: true, //gerek yok ama otomatik açılması için
+                position: { my: "center top", at: "center top" } //konum
+            });
+        })
+
+    </script>
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>

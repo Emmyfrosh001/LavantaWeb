@@ -2033,6 +2033,7 @@
     <Content Include="fonts\PlayfairDisplay\OFL.txt" />
     <Content Include="images\about-01.jpg" />
     <Content Include="images\about-02.jpg" />
+    <Content Include="images\about.jpg" />
     <Content Include="images\avatar-01.jpg" />
     <Content Include="images\banner-01.jpg" />
     <Content Include="images\banner-02.jpg" />
@@ -2109,11 +2110,16 @@
     <Content Include="images\product\lavanta-suyu.jpg" />
     <Content Include="images\product\lavanta.png" />
     <Content Include="images\product\lavantakesesi.png" />
+    <Content Include="images\product\lavantasuyu.jpg" />
+    <Content Include="images\product\lavantasuyu2.jpg" />
+    <Content Include="images\product\lavantasuyu3.jpg" />
     <Content Include="images\product\lavanta_k.jpg" />
     <Content Include="images\product\lavanta_kesesi.png" />
     <Content Include="images\product\lavanta_suyu.png" />
     <Content Include="images\product\organik-lavanta-yagi-min.jpg" />
     <Content Include="images\product\product-04.jpg" />
+    <Content Include="images\product\product-07.jpg" />
+    <Content Include="images\product\product-10.jpg" />
     <Content Include="images\slide-01.jpg" />
     <Content Include="images\slide-02.jpg" />
     <Content Include="images\slide-03.jpg" />
@@ -2121,6 +2127,7 @@
     <Content Include="images\slide-05.jpg" />
     <Content Include="images\slide-06.jpg" />
     <Content Include="images\slide-07.jpg" />
+    <Content Include="images\slider.jpg" />
     <Content Include="images\thumb-01.jpg" />
     <Content Include="images\thumb-02.jpg" />
     <Content Include="images\thumb-03.jpg" />

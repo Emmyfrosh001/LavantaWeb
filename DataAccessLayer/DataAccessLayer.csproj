@@ -55,8 +55,10 @@
     <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\IBasketDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\ICityDal.cs" />
     <Compile Include="Abstract\ICommentDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
+    <Compile Include="Abstract\IDistrictDal.cs" />
     <Compile Include="Abstract\IOrderDal.cs" />
     <Compile Include="Abstract\IOrderDetailDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
@@ -71,8 +73,10 @@
     <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfBasketDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="EntityFramework\EfCityDal.cs" />
     <Compile Include="EntityFramework\EfCommentDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
+    <Compile Include="EntityFramework\EfDiscrictDal.cs" />
     <Compile Include="EntityFramework\EfOrderDal.cs" />
     <Compile Include="EntityFramework\EfOrderDetailDal.cs" />
     <Compile Include="EntityFramework\EfProductDal.cs" />
@@ -132,6 +136,10 @@
     <Compile Include="Migrations\202402160247161_CityDistrictTabloAdd.designer.cs">
       <DependentUpon>202402160247161_CityDistrictTabloAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403071530022_UserCityDistrictEdit.cs" />
+    <Compile Include="Migrations\202403071530022_UserCityDistrictEdit.designer.cs">
+      <DependentUpon>202403071530022_UserCityDistrictEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402160247161_CityDistrictTabloAdd.resx">
       <DependentUpon>202402160247161_CityDistrictTabloAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403071530022_UserCityDistrictEdit.resx">
+      <DependentUpon>202403071530022_UserCityDistrictEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
