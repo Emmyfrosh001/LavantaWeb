@@ -7,24 +7,28 @@
     <div class="container">
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                @*<form>*@
+                <form action="/Home/ContactMessage" method="POST">
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
                         Bize mesaj gönder
                     </h4>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email adresiniz">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="UserMail" placeholder="Email adresiniz">
                         <img class="how-pos4 pointer-none" src="~/images/icons/icon-email.png" alt="ICON">
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="UserName" placeholder="Adınız Soyadınız">
+                        <img class="how-pos4 pointer-none" src="~/images/icons/icon-user.png" alt="ICON">
                     </div>
 
                     <div class="bor8 m-b-30">
-                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Nasıl yardımcı olabiliriz?"></textarea>
+                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="Message" placeholder="Nasıl yardımcı olabiliriz?"></textarea>
                     </div>
 
                     <button id="deneme" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
                         Gönder
                     </button>
 
-                @*</form>*@
+                </form>
             </div>
 
             <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
@@ -97,10 +101,22 @@
 
     <script src="vendor/sweetalert/sweetalert.min.js"></script>
 
-    <script>
-        $('#deneme').click(function () {
-            swal("Mesaj Gönderilemedi!", "Mail foksiyonlarında hata alındı.", "error");
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (Session["statusAdd"] == "Basarili")
+    {
+        Session["statusAdd"] = null;
+
+        <script>
+            window.onload = function () {
+                Swal.fire({
+                    icon: "success",
+                    title: "Mesajınız başarıyla alınmıştır!",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        </script>
+    }
 
 }

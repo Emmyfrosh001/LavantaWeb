@@ -48,6 +48,17 @@
                                     @Html.Label("Ürün Fiyatı:")
                                     @Html.TextBoxFor(x => x.ProductPrice, new { @class = "form-control" })
 
+                                    @Html.Label("Ürün Görseli 1:")<br />
+                                    <img src="~/images/@Model.ProductImage1" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                    @Html.TextBoxFor(x => x.ProductImage1)
+                                    <br />
+
+                                    @Html.Label("Ürün Görseli 2:")
+                                    @Html.TextBoxFor(x => x.ProductImage2, new { @class = "form-control" })
+
+                                    @Html.Label("Ürün Görseli 3:")
+                                    @Html.TextBoxFor(x => x.ProductImage3, new { @class = "form-control" })
+
                                     @Html.Label("Ürün Kategorisi:")
                                     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.categoriler, new { @class = "form-control" })
                                     <p style="color:red">@Html.ValidationMessageFor(x => x.CategoryID)</p>
@@ -60,13 +71,13 @@
 
                                     @Html.Label("Ürün Durumu:")
                                     @Html.DropDownList("ProductStatus", new List<SelectListItem>
-                                    {
+                                                                                                                    {
                                           new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
                                           new SelectListItem { Text = "Pasif", Value = "false"}
                                     }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
 
                                     <br />
-                                    <button class="btn btn-success">Ürünü Ekle</button>
+                                    <button class="btn btn-success">Ürünü Düzenle</button>
                                     <a href="/AdminProduct/Index" class="btn btn-secondary">Geri</a>
                                 </div>
                             }

@@ -27,3 +27,4 @@ C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAc
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.SettingTableAdd.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.UserLogininfoAdd.resources
 C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.CityDistrictTabloAdd.resources
+C:\Users\halil\source\repos\AydinogluLavender\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.UserCityDistrictEdit.resources
