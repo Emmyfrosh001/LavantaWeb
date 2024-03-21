@@ -48,6 +48,50 @@
                                     @Html.Label("Ürün Fiyatı:")
                                     @Html.TextBoxFor(x => x.ProductPrice, new { @class = "form-control" })
 
+                                <table>
+                                    <tr>
+                                        <td width="20%">
+                                            @Html.Label("Ürün Görseli 1:")<br />
+                                        </td>
+                                        <td width="30%">
+                                            <img src="~/images/@Model.ProductImage1" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                        </td>
+                                        @*<input type="file" name="ProductImage1"/>*@
+                                        <td width="50%">
+                                            @Html.TextBoxFor(x => x.ProductImage1, new { @class = "form-control"})
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            @Html.Label("Ürün Görseli 2:")<br />
+                                        </td>
+                                        <td>
+                                            <img src="~/images/@Model.ProductImage2" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                        </td>
+                                        @*<input type="file" name="ProductImage1"/>*@
+                                        <td width="60%">
+                                            @Html.TextBoxFor(x => x.ProductImage2, new { @class = "form-control"})
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            @Html.Label("Ürün Görseli 3:")<br />
+                                        </td>
+                                        <td>
+                                            <img src="~/images/@Model.ProductImage3" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                        </td>
+                                        @*<input type="file" name="ProductImage1"/>*@
+                                        <td width="60%">
+                                            @Html.TextBoxFor(x => x.ProductImage3, new { @class = "form-control"})
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+
+
                                     @Html.Label("Ürün Kategorisi:")
                                     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.categoriler, new { @class = "form-control" })
                                     <p style="color:red">@Html.ValidationMessageFor(x => x.CategoryID)</p>
@@ -60,13 +104,13 @@
 
                                     @Html.Label("Ürün Durumu:")
                                     @Html.DropDownList("ProductStatus", new List<SelectListItem>
-                                    {
+                                                                                                                                                                                                                                                                {
                                           new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
                                           new SelectListItem { Text = "Pasif", Value = "false"}
                                     }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
 
                                     <br />
-                                    <button class="btn btn-success">Ürünü Ekle</button>
+                                    <button class="btn btn-success">Ürünü Düzenle</button>
                                     <a href="/AdminProduct/Index" class="btn btn-secondary">Geri</a>
                                 </div>
                             }

@@ -4,6 +4,19 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style type="text/css">
+    #sol {
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+
+    #sag {
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+</style>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,7 +46,7 @@
                             @using (Html.BeginForm("EditProduct", "AdminProduct", FormMethod.Post))
                             {
 
-                                <div class="form-group col-md-6" style="padding-left: 45px">
+                                <div id="sol" class="form-group col-md-6" style="padding-left: 45px">
                                     @Html.HiddenFor(x => x.ProductID, new { @class = "form-control" })
                                     @Html.Label("Ürün Adı:")
                                     @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
@@ -48,16 +61,10 @@
                                     @Html.Label("Ürün Fiyatı:")
                                     @Html.TextBoxFor(x => x.ProductPrice, new { @class = "form-control" })
 
-                                    @Html.Label("Ürün Görseli 1:")<br />
-                                    <img src="~/images/@Model.ProductImage1" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
-                                    @Html.TextBoxFor(x => x.ProductImage1)
-                                    <br />
+                                    @Html.HiddenFor(x => x.ProductImage1, new { @class = "form-control" })
+                                    @Html.HiddenFor(x => x.ProductImage2, new { @class = "form-control" })
+                                    @Html.HiddenFor(x => x.ProductImage3, new { @class = "form-control" })
 
-                                    @Html.Label("Ürün Görseli 2:")
-                                    @Html.TextBoxFor(x => x.ProductImage2, new { @class = "form-control" })
-
-                                    @Html.Label("Ürün Görseli 3:")
-                                    @Html.TextBoxFor(x => x.ProductImage3, new { @class = "form-control" })
 
                                     @Html.Label("Ürün Kategorisi:")
                                     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.categoriler, new { @class = "form-control" })
@@ -71,7 +78,7 @@
 
                                     @Html.Label("Ürün Durumu:")
                                     @Html.DropDownList("ProductStatus", new List<SelectListItem>
-                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                                                        {
                                           new SelectListItem { Text = "Aktif", Value = "true",Selected=true},
                                           new SelectListItem { Text = "Pasif", Value = "false"}
                                     }, /*"Kategori Durumu Seçiniz!",*/ new { @class = "form-control" })
@@ -81,9 +88,85 @@
                                     <a href="/AdminProduct/Index" class="btn btn-secondary">Geri</a>
                                 </div>
                             }
+
+
+
+
+                            <center><h3 style="color:red"><b>Görsel Güncelleme</b></h3></center>
+                            <br />
+
+                            <div id="sag" class="form-group col-md-6" style="padding-left: 45px">
+
+                                <table>
+                                    <tr>
+                                        @using (Html.BeginForm("ProductImage1Edit", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.HiddenFor(x => x.ProductID, new { @class = "form-control" })
+                                            <td width="20%">
+                                                @Html.Label("Ürün Görseli 1:")<br />
+                                            </td>
+                                            <td width="30%">
+                                                <img src="~/images/@Model.ProductImage1" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                            </td>
+
+                                            <td width="50%">
+                                                <input type="file" name="ProductImage1" />
+                                                @*@Html.TextBoxFor(x => x.ProductImage1, new { @class = "form-control" })*@
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success">Görseli Güncelle</button>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @using (Html.BeginForm("ProductImage2Edit", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.HiddenFor(x => x.ProductID, new { @class = "form-control" })
+                                            <td width="20%">
+                                                @Html.Label("Ürün Görseli 2:")<br />
+                                            </td>
+                                            <td width="30%">
+                                                <img src="~/images/@Model.ProductImage2" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                            </td>
+
+                                            <td width="50%">
+                                                <input type="file" name="ProductImage2" />
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success">Görseli Güncelle</button>
+                                            </td>
+                                        }
+                                    </tr>
+
+                                    <tr>
+                                        @using (Html.BeginForm("ProductImage3Edit", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.HiddenFor(x => x.ProductID, new { @class = "form-control" })
+                                            <td width="20%">
+                                                @Html.Label("Ürün Görseli 3:")<br />
+                                            </td>
+                                            <td width="30%">
+                                                <img src="~/images/@Model.ProductImage3" alt="IMG-PRODUCT" style="width: auto; height: 150px;">
+                                            </td>
+
+                                            <td width="50%">
+                                                <input type="file" name="ProductImage3" />
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success">Görseli Güncelle</button>
+                                            </td>
+                                        }
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
                         </div>
                         <!-- /.card -->
                     </div>
+
+
                 </div>
                 <!-- /.col -->
             </div>

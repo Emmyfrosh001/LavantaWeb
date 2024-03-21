@@ -6,6 +6,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,6 +69,55 @@ namespace AydinogluLavender.Controllers
             pm.UpdateProductBl(product);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult ProductImage1Edit(Product product)
+        {
+            if (Request.Files.Count > 0)
+            {
+                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/images/product/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                product.ProductImage1 = "product/" + dosyaadi + uzanti;
+            }
+            var data = pm.GetByID(product.ProductID);
+            data.ProductImage1 = product.ProductImage1;
+            pm.UpdateProductBl(data);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult ProductImage2Edit(Product product)
+        {
+            if (Request.Files.Count > 0)
+            {
+                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/images/product/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                product.ProductImage2 = "product/" + dosyaadi + uzanti;
+            }
+            var data = pm.GetByID(product.ProductID);
+            data.ProductImage2 = product.ProductImage2;
+            pm.UpdateProductBl(data);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult ProductImage3Edit(Product product)
+        {
+            if (Request.Files.Count > 0)
+            {
+                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/images/product/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                product.ProductImage3 = "product/" + dosyaadi + uzanti;
+            }
+            var data = pm.GetByID(product.ProductID);
+            data.ProductImage3 = product.ProductImage3;
+            pm.UpdateProductBl(data);
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult DeleteProduct(int id)
         {
