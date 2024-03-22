@@ -75,10 +75,11 @@ namespace AydinogluLavender.Controllers
             if (Request.Files.Count > 0)
             {
                 string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
-                string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string yol = "~/images/product/" + dosyaadi + uzanti;
+                //string uzanti = Path.GetExtension(Request.Files[0].FileName);//gerek yok çünkü dosya adında uzantı yer alıyor.
+                string yol = "product/" + DateTime.Now.Ticks.ToString() + dosyaadi;
+                product.ProductImage1 = yol;
+                yol = "~/images/" + yol;
                 Request.Files[0].SaveAs(Server.MapPath(yol));
-                product.ProductImage1 = "product/" + dosyaadi + uzanti;
             }
             var data = pm.GetByID(product.ProductID);
             data.ProductImage1 = product.ProductImage1;
@@ -91,10 +92,11 @@ namespace AydinogluLavender.Controllers
             if (Request.Files.Count > 0)
             {
                 string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
-                string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string yol = "~/images/product/" + dosyaadi + uzanti;
+                //string uzanti = Path.GetExtension(Request.Files[0].FileName);//gerek yok çünkü dosya adında uzantı yer alıyor.
+                string yol = "product/" + DateTime.Now.Ticks.ToString() + dosyaadi;
+                product.ProductImage2 = yol;
+                yol = "~/images/" + yol;
                 Request.Files[0].SaveAs(Server.MapPath(yol));
-                product.ProductImage2 = "product/" + dosyaadi + uzanti;
             }
             var data = pm.GetByID(product.ProductID);
             data.ProductImage2 = product.ProductImage2;
@@ -107,10 +109,11 @@ namespace AydinogluLavender.Controllers
             if (Request.Files.Count > 0)
             {
                 string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
-                string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string yol = "~/images/product/" + dosyaadi + uzanti;
+                //string uzanti = Path.GetExtension(Request.Files[0].FileName);//gerek yok çünkü dosya adında uzantı yer alıyor.
+                string yol = "product/" + DateTime.Now.Ticks.ToString() + dosyaadi;
+                product.ProductImage3 = yol;
+                yol = "~/images/" + yol;
                 Request.Files[0].SaveAs(Server.MapPath(yol));
-                product.ProductImage3 = "product/" + dosyaadi + uzanti;
             }
             var data = pm.GetByID(product.ProductID);
             data.ProductImage3 = product.ProductImage3;
